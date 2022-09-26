@@ -1,37 +1,37 @@
-$theme-color: rgba(0,0,0,1);
-$primary-color: rgba(74, 173, 25, 1);
-$primary-dark-color: rgb(21, 48, 8);
-$primary-light-color: rgb(113, 255, 42);
-$secondary-color: rgb(23, 97, 160, 1);
-$secondary-dark-color: rgb(9, 38, 63);
-$secondary-light-color: rgb(37, 153, 255);
+@import "./stylings/vars.scss";
 
 *{
    margin:  0;
    padding: 0;
    box-sizing: border-box;
 }
+html {
+   font-size: 10px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+   @media (min-width: 576px){
+      font-size: 12px;
+      border: 3px solid orange;
+   }
+   @media (min-width: 768px){
+      font-size: 16px;
+   }
+   @media (min-width: 992px){
+      font-size: 20px;
+   }
+   @media (min-width: 1200px){
+      font-size: 24px;
+   }
+   @media (min-width: 1400px){
+      font-size: 28px;
+   }
+   @media (min-width: 1900px){
+      font-size: 32px;
+   }
+}
+
 body {
    width: 100vw;
    height: 100vh;
    background-color: $theme-color;
-   
-   &::before {
-      content: '';
-      display: block;
-      width: 80vw;
-      height: 1px;
-      margin: auto;
-      box-shadow: 0px 0px 40vmin 10vmin $secondary-color;
-   }
-   // &::before {
-   //    content: '';
-   //    display: block;
-   //    width: 100vw;
-   //    height: 100vh;
-   //    transform: translateY(-50%);
-   //    margin: auto;
-
-   //    background: radial-gradient(circle, $secondary-dark-color 0%, rgba(0, 213, 255, 0) 50vmin);
-   // }
 }

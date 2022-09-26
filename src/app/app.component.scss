@@ -1,3 +1,133 @@
-.toolbar {
+@import "../stylings/vars.scss";
 
+.container {
+   display: flex;
+   flex-direction: column;
+   margin: auto;
+   width: 90vw;
+   height: 100vh;
+   overflow: hidden;
+   
+   &::before {
+      content: '';
+      z-index: 0;
+      display: block;
+      position: relative;
+      top: 0;
+      width: 80vw;
+      height: auto;
+      margin: 0 auto;
+      box-shadow: 0px 0px 40vmin 12vmin $secondary-light-color;
+   }
+}
+
+.toolbar {
+   z-index: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: $secondary-light-color;
+
+   &__logo {
+      display: flex;
+      align-items: center;
+      height: 6rem;
+   }
+
+   &__logo-img {
+      height: 80%;
+   }
+
+   &__list {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      flex: 1 1 100%;
+      list-style: none;
+      font-size: 2rem;
+   }
+
+   &__list-item {
+      margin: 0 1rem;
+      padding: 0.5rem;
+      font-variant: small-caps;
+      font-weight: bold;
+      color: $secondary-light-color;
+      text-shadow: 0 0 0.2rem darken($color: $secondary-color, $amount: 20);
+   }
+}
+
+.main {
+   flex: 1 1 100%;
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   margin: 0.7rem 1.25rem;
+   background-color: darken($color: $secondary-color, $amount: 30);
+   border-radius: 0.6rem;
+   box-shadow: 0 0 0.5rem 0.5rem darken($color: $secondary-color, $amount: 30);
+   &__panel {
+      margin: 0.6rem;
+      padding: 0.2rem;
+      border-radius: 0.6rem;
+      background: linear-gradient(180deg, darken($color: $secondary-color, $amount: 20), darken($color: $secondary-color, $amount: 25));
+      box-shadow:  0 0.05rem 0.1rem 0.2rem darken($color: $secondary-color, $amount: 30),
+                   0 -0.05rem 0.1rem 0.2rem darken($color: $secondary-color, $amount: 10),
+                   inset 0 0 0.2rem 0.1rem darken($color: $secondary-color, $amount: 30);
+   }
+   &__kind-of-dices {
+      flex-basis: 20%;
+   }
+   &__results {
+      flex-basis: 60%;
+     }
+   &__chosen-dices {
+      flex-basis: 20%;
+   }
+
+   &__title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2.6rem;
+      width: 100%;
+      padding: 0.2rem 0.1rem;
+      color: $primary-color;
+      
+      span {
+         text-align: center;
+         display: inline-block;
+         height: fit-content;
+         line-height: 1.2rem;
+         vertical-align: middle;
+      }
+   }
+   .selector-dices{
+      list-style: none;
+       }
+   .kind-dice {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      padding: 0.25rem;
+   }
+   .icon-dice {
+      height: 100%;
+      padding: 0.125rem;
+      vertical-align: middle;
+      border: 0.07rem solid $primary-dark-color;
+      border-radius: 0.125rem;
+   }
+   .name-dice {
+      display: inline-block;
+      padding: 0 0.25rem;
+      color: $primary-color;
+      height: fit-content;
+      line-height: 1rem;
+      vertical-align: middle;
+   }
+}
+
+.footer {
+   background-color: rgba(76, 216, 111, 0.4);
 }
