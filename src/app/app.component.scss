@@ -1,4 +1,77 @@
+@use 'sass:math';
 @import "../stylings/vars.scss";
+$widthSides: 5;
+$heightSides: 6;
+$unitWidthSides: 1em * $widthSides;
+$unitHeightSide: 1em * $heightSides / 2;
+
+$anglePentagon: (360 / 5) * 1deg;
+$apothemPentagon: $heightSides / (2 * math.tan($anglePentagon / 2));
+$heightDeflectionTriangles: math.sqrt(math.pow(($widthSides), 2) - math.pow($apothemPentagon, 2));
+$sinDeflaction: math.div($heightDeflectionTriangles, $widthSides);
+$angleDeflection: math.asin($sinDeflaction);
+
+.top1{
+   transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(0deg) rotateX($angleDeflection);
+   border-bottom: $unitWidthSides solid rgba(51, 251, 51, 0.6);
+}
+.top2{
+   transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(72deg) rotateX($angleDeflection);
+   border-bottom: $unitWidthSides solid rgba(47, 97, 177, 0.6);
+}
+.top3{
+   transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(144deg) rotateX($angleDeflection);
+border-bottom: $unitWidthSides solid rgba(158, 95, 23, 0.6);
+}
+.top4{
+   transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(216deg) rotateX($angleDeflection);
+border-bottom: $unitWidthSides solid rgba(59, 0, 107, 0.6);
+}
+.top5{
+   transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(288deg) rotateX($angleDeflection );
+border-bottom: $unitWidthSides solid rgba(10, 110, 110, 0.6);
+}
+.obj3d{
+   width: 200px;
+   height: 200px;
+   perspective: 800px;
+}
+
+.dice{
+   font-size: 10px;
+   position: relative;
+   width: 100px;
+   height: 100px;
+   border: 2px solid rgb(86, 133, 130);
+   transform-style: preserve-3d;
+   background-color: rgb(241, 255, 176);
+   transform: rotateX(94deg);
+}
+
+.deltoid {
+   position: absolute;
+   top: 50%;
+   left: calc(50% - $unitHeightSide);
+   width: 0;
+   transform-origin: 50% 0;
+  
+   border-left: $unitHeightSide solid transparent;
+   border-right: $unitHeightSide solid transparent;
+}
+.deltoid::after {
+   content: '';
+   position: absolute;
+   top: $unitWidthSides;
+   left: -$unitHeightSide;
+   width: 0;
+   border-left: $unitHeightSide solid transparent;
+   border-right: $unitHeightSide solid transparent;
+   border-top: 1em solid rgb(0, 92, 167);
+
+}
+
+
+
 
 .container {
    display: flex;
