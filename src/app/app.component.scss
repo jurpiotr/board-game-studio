@@ -1,6 +1,8 @@
 @use 'sass:math';
 @import "../stylings/vars.scss";
-$widthSides: 5;
+
+$color_dice: $secondary-color;
+$widthSides: 6;
 $heightSides: 6;
 $unitWidthSides: 1em * $widthSides;
 $unitHeightSide: 1em * $heightSides / 2;
@@ -11,41 +13,87 @@ $heightDeflectionTriangles: math.sqrt(math.pow(($widthSides), 2) - math.pow($apo
 $sinDeflaction: math.div($heightDeflectionTriangles, $widthSides);
 $angleDeflection: math.asin($sinDeflaction);
 
-.top1{
+$isoscelesSide: math.sqrt(math.pow(($widthSides / 2), 2) + math.pow($apothemPentagon, 2));
+$diffDeflectionVertexToBase: $isoscelesSide - $apothemPentagon;
+$distance-top-from-bottom-triangles: math.tan($angleDeflection) * $diffDeflectionVertexToBase;
+$heightConnectingCubes: ($diffDeflectionVertexToBase / math.cos($angleDeflection)) * 1.0em;
+
+@keyframes rotation {
+   0% {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+   }
+   25%{
+      transform: rotateX(60deg) rotateY(0deg) rotateZ(90deg);
+   }
+   50% {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(180deg);
+   }
+   75% {
+      transform: rotateX(120deg) rotateY(0deg) rotateZ(270deg);
+   }
+   100% {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(360deg);
+   }
+}
+
+.top1{ 
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(0deg) rotateX($angleDeflection);
-   border-bottom: $unitWidthSides solid rgba(51, 251, 51, 0.6);
+   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top2{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(72deg) rotateX($angleDeflection);
-   border-bottom: $unitWidthSides solid rgba(47, 97, 177, 0.6);
+   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top3{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(144deg) rotateX($angleDeflection);
-border-bottom: $unitWidthSides solid rgba(158, 95, 23, 0.6);
+   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top4{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(216deg) rotateX($angleDeflection);
-border-bottom: $unitWidthSides solid rgba(59, 0, 107, 0.6);
+   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top5{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(288deg) rotateX($angleDeflection );
-border-bottom: $unitWidthSides solid rgba(10, 110, 110, 0.6);
+   border-bottom: $unitWidthSides solid $color_dice;
+}
+.top6{
+   transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(36deg) rotateX($angleDeflection * -1) rotateY(180deg);
+   border-bottom: $unitWidthSides solid $color_dice;
+}
+.top7{
+   transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(108deg) rotateX($angleDeflection * -1) rotateY(180deg);
+   border-bottom: $unitWidthSides solid $color_dice;
+}
+.top8{
+   transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(180deg) rotateX($angleDeflection * -1) rotateY(180deg);
+   border-bottom: $unitWidthSides solid $color_dice;
+}
+.top9{
+   transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(252deg) rotateX($angleDeflection * -1) rotateY(180deg);
+   border-bottom: $unitWidthSides solid $color_dice;
+}
+.top10{
+   transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(324deg) rotateX($angleDeflection * -1) rotateY(180deg);
+   border-bottom: $unitWidthSides solid $color_dice;
 }
 .obj3d{
-   width: 200px;
-   height: 200px;
+   width: 100%;
+   height:100%;
    perspective: 800px;
 }
 
 .dice{
-   font-size: 10px;
    position: relative;
-   width: 100px;
-   height: 100px;
-   border: 2px solid rgb(86, 133, 130);
+   width: 100%;
+   height: 100%;
    transform-style: preserve-3d;
-   background-color: rgb(241, 255, 176);
-   transform: rotateX(94deg);
+   transform-origin: center;
+   transform: rotateX(90deg) rotateZ(0deg);
+    &:hover {
+      animation: rotation 8s linear infinite;
+      animation-direction: initial;
+    }
+
 }
 
 .deltoid {
@@ -54,7 +102,7 @@ border-bottom: $unitWidthSides solid rgba(10, 110, 110, 0.6);
    left: calc(50% - $unitHeightSide);
    width: 0;
    transform-origin: 50% 0;
-  
+   backface-visibility: hidden;
    border-left: $unitHeightSide solid transparent;
    border-right: $unitHeightSide solid transparent;
 }
@@ -66,12 +114,9 @@ border-bottom: $unitWidthSides solid rgba(10, 110, 110, 0.6);
    width: 0;
    border-left: $unitHeightSide solid transparent;
    border-right: $unitHeightSide solid transparent;
-   border-top: 1em solid rgb(0, 92, 167);
+   border-top: $heightConnectingCubes solid $color_dice;
 
 }
-
-
-
 
 .container {
    display: flex;
@@ -181,15 +226,17 @@ border-bottom: $unitWidthSides solid rgba(10, 110, 110, 0.6);
    .kind-dice {
       display: flex;
       align-items: center;
-      height: 3rem;
       padding: 0.25rem;
+      font-size: 1em;
    }
    .icon-dice {
-      height: 100%;
-      padding: 0.125rem;
+      height: 3rem;
+      width: 3rem;
+      padding: 0.1rem;
       vertical-align: middle;
       border: 0.07rem solid $primary-dark-color;
       border-radius: 0.125rem;
+      font-size: 0.25rem;
    }
    .name-dice {
       display: inline-block;
@@ -204,3 +251,79 @@ border-bottom: $unitWidthSides solid rgba(10, 110, 110, 0.6);
 .footer {
    background-color: rgba(76, 216, 111, 0.4);
 }
+
+
+
+// $edge-pentagon: 120;
+// $pentagon-height: ($edge-pentagon * (math.sqrt(5 + 2 * math.sqrt(5))))/2;
+// $pentagon-diagonal: ($edge-pentagon * (1 + math.sqrt(5)))/2;
+// $outside-edge-angles: (180deg - 108deg) / 2;
+// $apothemPentagon: $edge-pentagon / (2 * math.tan($outside-edge-angles));
+// $pentagon-circumcircle-radius: $pentagon-height - $apothemPentagon;
+
+// $xyz: $pentagon-circumcircle-radius - $apothemPentagon;
+// $height-pentagon-deflation: math.tan($outside-edge-angles) * $apothemPentagon;
+// $hypotenuse-pentagon-deflation: math.sqrt(math.pow($apothemPentagon, 2) + math.pow($height-pentagon-deflation, 2));
+// $height-diagonal-to-center:  math.sqrt(math.pow($pentagon-circumcircle-radius, 2) - math.pow(($pentagon-diagonal / 2), 2));
+// $turn-thift-pentagon-to-diagonal: $apothemPentagon - $height-diagonal-to-center;
+
+// $diff-circumcircles: $pentagon-circumcircle-radius - $apothemPentagon;
+// $circumcircles-ratio: ($pentagon-circumcircle-radius/ $apothemPentagon) * 50%;
+// p {
+//    width: $diff-circumcircles * 10px;
+//    height: 20px;
+//    background: rgb(81, 226, 23);
+// }
+// .dogecahedron {
+//    position: relative;
+//    width: $pentagon-diagonal * 1px;
+//    height: $pentagon-diagonal * 1px;
+
+//    background: rgb(23, 255, 100);
+//    .pentagon {
+//       top: ($diff-circumcircles / 4) * 1px;
+//    }
+// }
+// .pentagon {
+//    position: absolute;
+//    width: $pentagon-height * 1px;
+//    height: $pentagon-height * 1px;
+//    background: linear-gradient(45deg, rgba(194, 47, 47, 0.7) 0%, rgba(0, 0, 216, 0.4) 100%);
+//    transform-origin: 50%;
+
+// }
+// .p2 {
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    transform: /*translate3d($edge-pentagon * 1.36px, $turn-thift-pentagon-to-diagonal * 1px, 0px) */rotateZ($outside-edge-angles * 8);
+//    animation: r 6s linear infinite;
+//    clip-path: polygon( 50% 0, 100% 38%, 81% 100%, 19% 100%, 0 38%);
+// }
+// .ppp{
+//    width: 2px;
+//    height: 2px;
+//    background-color: black;
+// }
+
+
+
+// @keyframes r {
+//    0% {
+//       transform: rotateX(0) rotateY(0deg) rotateZ(0deg);
+//    }
+//    25%{
+//       transform: rotateX(0) rotateY(0deg) rotateZ(90deg);
+//    }
+//    50% {
+//       transform: rotateX(0) rotateY(0deg) rotateZ(180deg);
+//    }
+//    75% {
+//       transform: rotateX(0) rotateY(0deg) rotateZ(270deg);
+//    }
+//    100% {
+//       transform: rotateX(0) rotateY(0deg) rotateZ(360deg);
+//    }
+
+
+// }
