@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DodecahedronComponent } from './dodecahedron/dodecahedron.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DodecahedronComponent
   ],
   imports: [
     BrowserModule,

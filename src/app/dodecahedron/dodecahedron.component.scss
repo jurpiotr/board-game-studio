@@ -1,0 +1,100 @@
+@use 'sass:math';
+
+@function createPolygon($n) {
+  $radius: 50%;
+  $angle_between_sides: calc(360deg / $n);
+  $vertices: ();
+  $init_angle: -90deg;
+
+  @for $i from 0 to $n {
+    $current_angle: $i * $angle_between_sides + $init_angle;
+    $x: $radius * (1 + math.cos($current_angle));
+    $y: $radius * (1 + math.sin($current_angle));
+    $vertices: $vertices, $x $y;
+  }
+  @return polygon($vertices);
+}
+
+@function oppAxisZ($rZ2, $i) {
+  $opposite: 180deg;
+  @if (nth($rZ2, $i - 6) == $opposite) {
+    $opposite: nth($rZ2, $i - 6) - $opposite;
+  } @else if (calc(nth($rZ2, $i - 6) + $opposite) > $opposite) {
+    $opposite: $opposite - calc(nth($rZ2, $i - 6) + $opposite);
+  } @else {
+    $opposite: nth($rZ2, $i - 6) + $opposite;
+  }
+  @return $opposite;
+}
+
+@mixin p-set($ang, $angY, $angZ, $transZ) {
+  transform: rotateZ($ang) rotateY($angY) rotateZ($angZ) translateZ(calc($transZ));
+  clip-path: createPolygon(5);
+}
+
+@mixin dodecahedron($side_lenght) {
+  //golden ratio (phi)
+  $phi: (1 + math.sqrt(5)) * .5;
+  $midradius: $side_lenght * (math.pow($phi, 2) * .5 ) * .5;
+  $sideScene: $side_lenght * 2;
+
+  overflow: hidden;
+  position: relative;
+  width: $sideScene;
+  height: $sideScene;
+  perspective: 500px;
+  perspective-origin: 50% 50%;
+  transform: scale3d(1, 1, 1);
+
+  .dodecahedron {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    position: absolute;
+
+    > * {
+      position: absolute;
+      background: #6599d49a;
+      width: $side_lenght;
+      height: $side_lenght;
+      left: 25%;
+      top: 25%;
+
+      $angle3D-1: 90 - (math.acos(calc(-1 / math.sqrt(5))) * .5);
+      $angle3D-2: math.acos(calc(-1 / math.sqrt(5))) * .5;
+      $rotateZ1: 0deg, 90deg, $angle3D-1, 0deg, 90deg, -$angle3D-1;
+      $rotateY: $angle3D-1, $angle3D-2, 90deg, -$angle3D-1, -$angle3D-2, 90deg;
+      $rotateZ2: 90deg, -90deg, 180deg, -90deg, 90deg, 0deg;
+
+      @for $i from 1 to 13 {
+        @if ($i > 6 ) {
+          &:nth-of-type(#{$i}) {
+            @include p-set(nth($rotateZ1, $i - 6), nth($rotateY, $i - 6), oppAxisZ($rotateZ2, $i), -$midradius);
+          }
+        } @else {
+          &:nth-of-type(#{$i}) {
+            @include p-set(nth($rotateZ1, $i), nth($rotateY, $i), nth($rotateZ2, $i), $midradius);
+          }
+        }
+        &:nth-of-type(#{$i}) {
+            background: linear-gradient(to top, rgb(5 * $i, 13 * $i , 87 * $i), #333 50%, rgb(20 * $i, 30 * $i, 40 * $i) 75%);
+            &:hover { background: #a8ffa8ed; }
+        }
+      }
+    }
+  }
+}
+
+.carousel {
+  $size: 25vmin;
+  @include dodecahedron($size);
+
+  img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $size * .3;
+    color:rgb(0, 4, 41);
+    text-shadow: 0px 0px 4px rgb(55, 75, 255);
+  }
+}
