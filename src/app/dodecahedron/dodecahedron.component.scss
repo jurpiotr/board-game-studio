@@ -86,7 +86,7 @@
 }
 
 .carousel {
-  $size: 25vmin;
+  $size: 4vmin;
   @include dodecahedron($size);
 
   img {
