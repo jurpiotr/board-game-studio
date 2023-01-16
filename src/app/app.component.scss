@@ -17,7 +17,7 @@
       width: 80vw;
       height: auto;
       margin: 0 auto;
-      box-shadow: 0px 0px 40vmin 12vmin $secondary-light-color;
+      box-shadow: 0px 0px 40vmin 12vmin $sec-color-light;
    }
 }
 
@@ -26,7 +26,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   color: $secondary-light-color;
+   color: $sec-color-light;
 
    &__logo {
       display: flex;
@@ -52,8 +52,8 @@
       padding: 0.5rem;
       font-variant: small-caps;
       font-weight: bold;
-      color: $secondary-light-color;
-      text-shadow: 0 0 0.2rem darken($color: $secondary-color, $amount: 20);
+      color: $sec-color-lightest;
+      text-shadow: 0 0 0.3rem $sec-color-darkest;
    }
 }
 
@@ -63,27 +63,22 @@
    flex-direction: row;
    align-items: flex-start;
    margin: 0.7rem 1.25rem;
-   background-color: darken($color: $secondary-color, $amount: 30);
+
    border-radius: 0.6rem;
-   box-shadow: 0 0 0.5rem 0.5rem darken($color: $secondary-color, $amount: 30);
    &__panel {
       margin: 0.6rem;
       padding: 0.2rem;
       border-radius: 0.6rem;
-      background: linear-gradient(180deg, darken($color: $secondary-color, $amount: 20), darken($color: $secondary-color, $amount: 25));
-      box-shadow:  0 0.05rem 0.1rem 0.2rem darken($color: $secondary-color, $amount: 30),
-                   0 -0.05rem 0.1rem 0.2rem darken($color: $secondary-color, $amount: 10),
-                   inset 0 0 0.2rem 0.1rem darken($color: $secondary-color, $amount: 30);
+      background: linear-gradient(180deg,  $sec-color-dark, $sec-color-darkest);
+      box-shadow:  0 0rem 0.2rem darken($color: $sec-color, $amount: 12),
+                   inset 0 0 0.2rem 0.1rem $sec-color-darkest;
    }
    &__kind-of-dices {
-      flex-basis: 20%;
+      flex-basis: 22%;
    }
    &__results {
-      flex-basis: 60%;
+      flex-basis: 78%;
      }
-   &__chosen-dices {
-      flex-basis: 20%;
-   }
 
    &__title {
       display: flex;
@@ -92,7 +87,7 @@
       height: 2.6rem;
       width: 100%;
       padding: 0.2rem 0.1rem;
-      color: $primary-color;
+      color: $pri-color-light;
       
       span {
          text-align: center;
@@ -104,31 +99,102 @@
    }
    .selector-dices{
       list-style: none;
-       }
-   .kind-dice {
+   }
+
+   .bone {
       display: flex;
       align-items: center;
       padding: 0.25rem;
-      font-size: 1em;
-   }
-   .icon-dice {
-      height: 3rem;
-      width: 3rem;
-      padding: 0.1rem;
-      vertical-align: middle;
-      border: 0.07rem solid $primary-dark-color;
-      border-radius: 0.125rem;
-      font-size: 0.25rem;
-   }
-   .name-dice {
-      display: inline-block;
-      padding: 0 0.25rem;
-      color: $primary-color;
-      height: fit-content;
-      line-height: 1rem;
-      vertical-align: middle;
+
+      &:hover .bone__name {
+         font-size: $size-dice / 4;
+         padding-left: 0.2rem;
+      }
+      &:hover {
+         .bone__dec, .bone__amount, .bone__inc {
+            display: block;
+         }
+      }
+   
+      &__icon {
+         height: $size-dice;
+         width: $size-dice;
+         vertical-align: middle;
+         font-size: 0.25rem;
+      }
+      &__settings {
+         display: flex;
+         flex-wrap: wrap;
+         width: 100%;
+         padding: 0 0.25rem;
+         color: $pri-color;
+         height: fit-content;
+         line-height: 1rem;
+         vertical-align: middle;
+      }
+      &__name{
+         width: 100%;
+         padding-bottom: 0.2rem;
+      }
+      &__amount {
+         position: relative;
+         display: none;
+         height: $size-dice / 4;
+         max-width: $size-dice / 3;
+         font-size: $size-dice / 4;
+         background-color: $pri-color-dark;
+         border: 0px;
+         text-align: center;
+         &:focus {
+            outline: 2px solid rgba(28,110,164,0.16);
+            outline-offset: 0px;
+         }
+       
+         // hide default spin into input
+         &[type=number] {
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
+         }
+         &::-webkit-inner-spin-button {
+            -webkit-appearance: inner-spin-button;
+            display: inline-block;
+            cursor: default;
+            flex: 0 0 auto;
+            align-self: stretch;
+            -webkit-user-select: none;
+            opacity: 0;
+            pointer-events: none;
+            -webkit-user-modify: read-only;
+         }
+      }
+      &__dec, &__inc {
+         display: none;
+         width: $size-dice / 4;
+         height: $size-dice / 4;
+         background-color: $pri-color-dark;
+         border: 0px;
+         border-style: none;
+         font-size: $size-dice / 4;
+         font-weight: bolder;
+         line-height: $size-dice / 6;
+         cursor: pointer;
+      }
+      &__dec:active, &__inc:active {
+         background-color: $pri-color;
+         color: $pri-color-lightest;
+      }
+      &__dec {
+         border-radius: 5px 0px 0px 5px;
+      }
+      &__inc {
+         border-radius: 0px 5px 5px 0px;
+      }
    }
 }
+
+/* Firefox */
+
 
 .footer {
    background-color: rgba(76, 216, 111, 0.4);

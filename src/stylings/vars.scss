@@ -1,8 +1,23 @@
-$theme-color: rgba(0,0,0,1);
-$primary-color: rgba(74, 173, 25, 1);
-$primary-dark-color: rgb(21, 48, 8);
-$primary-light-color: rgb(113, 255, 42);
-$secondary-color: rgb(23, 97, 160, 1);
-$secondary-dark-color: rgb(9, 38, 63);
-$secondary-light-color: rgb(37, 153, 255);
+// $theme-color: rgba(0,9,17,1);
+// $primary-color: rgba(74, 173, 25, 1);
+// $primary-color: rgba(14, 169, 107, 1);
+// $primary-dark-color: rgb(21, 48, 8);
 
+// $primary-light-color: rgb(113, 255, 42);
+// $secondary-color: rgb(2, 39, 70, 1);
+// $secondary-dark-color: rgb(7, 5, 92);
+// $secondary-light-color: rgb(9, 65, 116);
+
+$size-dice: 3rem;
+
+$sec-color-darkest: rgba(0, 9, 17);
+$sec-color-dark: rgba(1, 25, 45);
+$sec-color: rgba(2, 39, 70);
+$sec-color-light: rgba(4, 52, 92);
+$sec-color-lightest: rgba(9, 65, 112, 1);
+
+$pri-color-darkest: rgba(0, 18, 11);
+$pri-color-dark: rgba(0, 47, 28);
+$pri-color: rgba(0, 74, 44);
+$pri-color-light: rgba(0, 97, 58);
+$pri-color-lightest: rgba(2, 119, 72);

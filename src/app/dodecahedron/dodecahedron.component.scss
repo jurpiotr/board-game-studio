@@ -1,4 +1,5 @@
 @use 'sass:math';
+@import "../../stylings/vars.scss";
 
 @function createPolygon($n) {
   $radius: 50%;
@@ -42,7 +43,7 @@
   position: relative;
   width: $sideScene;
   height: $sideScene;
-  perspective: 500px;
+  perspective: 1000px;
   perspective-origin: 50% 50%;
   transform: scale3d(1, 1, 1);
 
@@ -54,7 +55,7 @@
 
     > * {
       position: absolute;
-      background: #6599d49a;
+      background: $pri-color;
       width: $side_lenght;
       height: $side_lenght;
       left: 25%;
@@ -70,6 +71,9 @@
         @if ($i > 6 ) {
           &:nth-of-type(#{$i}) {
             @include p-set(nth($rotateZ1, $i - 6), nth($rotateY, $i - 6), oppAxisZ($rotateZ2, $i), -$midradius);
+            &::after {
+              transform: rotateX(180deg);
+            }
           }
         } @else {
           &:nth-of-type(#{$i}) {
@@ -77,8 +81,13 @@
           }
         }
         &:nth-of-type(#{$i}) {
-            background: linear-gradient(to top, rgb(5 * $i, 13 * $i , 87 * $i), #333 50%, rgb(20 * $i, 30 * $i, 40 * $i) 75%);
-            &:hover { background: #a8ffa8ed; }
+          background-color: $sec-color;
+          &::after {
+            content: "#{$i}";
+            width: 100%;
+            height: 75%;
+            text-align: center;
+          }
         }
       }
     }
@@ -86,15 +95,15 @@
 }
 
 .carousel {
-  $size: 4vmin;
-  @include dodecahedron($size);
+  @include dodecahedron($size-dice / 2);
 
-  img {
+  div:not(.dodecahedron) {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: $size * .3;
+    font-size: $size-dice * .28;
     color:rgb(0, 4, 41);
     text-shadow: 0px 0px 4px rgb(55, 75, 255);
+    box-shadow: inset 0 0 4px black;
   }
 }

@@ -15,35 +15,65 @@
             <span>Kind of Dices</span>
          </h4>
          <ul class="selector-dices">
-            <li class="kind-dice">
-               <img class="icon-dice" src="assets/logo.png">
-               <span class="name-dice">D4</span>
+            <li class="bone">
+               <img class="bone__icon" src="assets/logo.png">
+               <div class="bone__settings">
+                  <span class="bone__name">D4</span>
+                  <button class="bone__dec">❰</button>
+                  <input type="number" value="0" min="1" max="4" class="bone__amount">
+                  <button class="bone__inc">❱</button>
+               </div>
             </li>
-            <li class="kind-dice">
-               <img class="icon-dice" src="assets/logo.png">
-               <span class="name-dice">D6</span>
+            <li class="bone">
+               <img class="bone__icon" src="assets/logo.png">
+               <div class="bone__settings">
+                  <span class="bone__name">D6</span>
+                  <button class="bone__dec">❰</button>
+                  <input type="number" value="0" min="1" max="4" class="bone__amount">
+                  <button class="bone__inc">❱</button>
+               </div>
             </li>
-            <li class="kind-dice">
-               <img class="icon-dice" src="assets/logo.png">
-               <span class="name-dice">D8</span>
+            <li class="bone">
+               <img class="bone__icon" src="assets/logo.png">
+               <div class="bone__settings">
+                  <span class="bone__name">D8</span>
+                  <button class="bone__dec">❰</button>
+                  <input type="number" value="0" min="1" max="4" class="bone__amount">
+                  <button class="bone__inc">❱</button>
+               </div>
             </li>
-            <li class="kind-dice">
-                  <div class="icon-dice">
-                      <app-pentagonal-trapezohedron></app-pentagonal-trapezohedron>  
-                  </div>
-                  <span class="name-dice">D10</span>
-               </li>
-            <li class="kind-dice">
-                  <div class="icon-dice">
+            <li class="bone">
+               <div class="bone__icon">
                      <app-pentagonal-trapezohedron></app-pentagonal-trapezohedron>  
-                     </div>
-               <span class="name-dice">D10 in tens</span>
+               </div>
+               <div class="bone__settings">
+                  <span class="bone__name">D10</span>
+                  <button class="bone__dec">❰</button>
+                  <input type="number" value="0" min="1" max="4" class="bone__amount">
+                  <button class="bone__inc">❱</button>
+               </div>
+               </li>
+            <li class="bone">
+               <div class="bone__icon">
+                  <app-pentagonal-trapezohedron></app-pentagonal-trapezohedron>  
+               </div>
+               <div class="bone__settings">
+                  <span class="bone__name">D10 in tens</span>
+                  <button class="bone__dec">❰</button>
+                  <input type="number" value="0" min="1" max="4" class="bone__amount">
+                  <button class="bone__inc">❱</button>
+               </div>
             </li>
-            <li class="kind-dice">
-               <div class="icon-dice">
+            <li class="bone">
+               <div class="bone__icon">
                   <app-dodecahedron></app-dodecahedron>
                </div>
-            <span class="name-dice">D12</span>
+               <div class="bone__settings">
+                  <span class="bone__name">D12</span>
+                  <button class="bone__dec">❰</button>
+                  <input type="number" value="0" min="1" max="4" class="bone__amount">
+                  <button class="bone__inc">❱</button>
+               </div>
          </li>                          
          </ul>
       </div>
@@ -52,14 +82,7 @@
          <h4 class="section__title">
             <span>Dices results</span>
          </h4>
-
       </div> 
-
-      <div class="section__panel section__chosen-dices">
-         <h4 class="section__title">
-            <span>Chosen dice set xx</span>
-         </h4>
-      </div>
 
    </div>
 

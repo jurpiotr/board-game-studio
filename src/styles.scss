@@ -1,4 +1,22 @@
 @import "./stylings/vars.scss";
+@keyframes rotation {
+   0% {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+   }
+   25%{
+      transform: rotateX(60deg) rotateY(0deg) rotateZ(90deg);
+   }
+   50% {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(180deg);
+   }
+   75% {
+      transform: rotateX(120deg) rotateY(0deg) rotateZ(270deg);
+   }
+   100% {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(360deg);
+   }
+}
+
 
 *{
    margin:  0;
@@ -20,18 +38,27 @@ html {
       font-size: 20px;
    }
    @media (min-width: 1200px){
-      font-size: 24px;
+      font-size: 22px;
    }
    @media (min-width: 1400px){
-      font-size: 28px;
+      font-size: 24px;
    }
    @media (min-width: 1900px){
-      font-size: 32px;
+      font-size: 28px;
    }
 }
 
 body {
    width: 100vw;
    height: 100vh;
-   background-color: $theme-color;
+   background-color: $sec-color-darkest;
+}
+
+// beyond encapsulation...
+
+.bone {
+   &:hover .dice, &:hover .dodecahedron{
+      animation: rotation 8s linear infinite;
+      animation-direction: initial;
+   }
 }
