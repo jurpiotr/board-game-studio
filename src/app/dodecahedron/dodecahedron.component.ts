@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dodecahedron',
+  selector: 'dodecahedron',
   templateUrl: './dodecahedron.component.html',
   styleUrls: ['./dodecahedron.component.scss']
 })

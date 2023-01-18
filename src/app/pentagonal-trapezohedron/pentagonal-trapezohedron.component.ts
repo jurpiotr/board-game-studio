@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pentagonal-trapezohedron',
+  selector: 'pentagonal-trapezohedron',
   templateUrl: './pentagonal-trapezohedron.component.html',
   styleUrls: ['./pentagonal-trapezohedron.component.scss']
 })
