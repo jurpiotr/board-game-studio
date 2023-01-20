@@ -62,3 +62,20 @@ body {
       animation-direction: initial;
    }
 }
+.section__title {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 2.6rem;
+   width: 100%;
+   padding: 0.2rem 0.1rem;
+   color: $pri-color-light;
+   
+   span {
+      text-align: center;
+      display: inline-block;
+      height: fit-content;
+      line-height: 1.2rem;
+      vertical-align: middle;
+   }
+}

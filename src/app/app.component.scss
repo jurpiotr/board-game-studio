@@ -10,7 +10,7 @@
    
    &::before {
       content: '';
-      z-index: 0;
+      z-index: -1;
       display: block;
       position: relative;
       top: 0;
@@ -69,7 +69,7 @@
       margin: 0.6rem;
       padding: 0.2rem;
       border-radius: 0.6rem;
-      background: linear-gradient(180deg,  $sec-color-dark, $sec-color-darkest);
+      background: linear-gradient(  $sec-color 0%, $sec-color-dark 100%);
       box-shadow:  0 0rem 0.2rem darken($color: $sec-color, $amount: 12),
                    inset 0 0 0.2rem 0.1rem $sec-color-darkest;
    }
@@ -80,23 +80,7 @@
       flex-basis: 78%;
      }
 
-   &__title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 2.6rem;
-      width: 100%;
-      padding: 0.2rem 0.1rem;
-      color: $pri-color-light;
-      
-      span {
-         text-align: center;
-         display: inline-block;
-         height: fit-content;
-         line-height: 1.2rem;
-         vertical-align: middle;
-      }
-   }
+
    .selector-dices{
       list-style: none;
    }
