@@ -1,0 +1,55 @@
+@import "../../stylings/vars.scss";
+
+.banner {
+   z-index: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: $sec-color-light;
+
+   &__logo {
+      display: flex;
+      align-items: center;
+      height: 6rem;
+   }
+
+   &__logo-img {
+      height: 80%;
+   }
+
+   &__list {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      flex: 1 1 100%;
+      list-style: none;
+      font-size: 2rem;
+   }
+
+   &__list-item {
+      margin: 0 1rem;
+      padding: 0.5rem;
+      font-variant: small-caps;
+      font-weight: bold;
+      color: $sec-color-lightest;
+      text-shadow: 0 0 0.3rem $sec-color-darkest;
+
+      &:hover {
+         cursor: pointer;
+         text-shadow: 0 0 0.1rem rgb(0, 0, 0),
+                      0 0 0.1rem rgb(0, 0, 0),
+                      0 0 0.9rem $sec-color-light,
+                      0 0 0.9rem $sec-color-light;
+         text-decoration-line: underline;
+      }
+      &:active {
+         color: $pri-color-light;
+         cursor: pointer;
+         text-shadow: 0 0 0.1rem rgb(0, 0, 0),
+                      0 0 0.1rem rgb(0, 0, 0),
+                      0 0 0.3rem $sec-color-lightest,
+                      0 0 0.3rem $sec-color-lightest;
+
+      }
+   }
+}

@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { DodecahedronComponent } from './dodecahedron/dodecahedron.component';
 import { MainComponent } from './main/main.component';
 import { PentagonalTrapezohedronComponent } from './pentagonal-trapezohedron/pentagonal-trapezohedron.component';
+import { HeaderComponent } from './header/header.component';
+import { DicePanelComponent } from './dice-panel/dice-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DodecahedronComponent,
     MainComponent,
-    PentagonalTrapezohedronComponent
+    PentagonalTrapezohedronComponent,
+    HeaderComponent,
+    DicePanelComponent
   ],
   imports: [
     BrowserModule,

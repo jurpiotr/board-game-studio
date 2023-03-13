@@ -1,0 +1,96 @@
+@import "../../stylings/vars.scss";
+
+.selector-dices{
+   list-style: none;
+}
+
+.bone {
+   display: flex;
+   align-items: center;
+   padding: 0.25rem;
+
+   &:hover .bone__name {
+      font-size: $size-dice / 4;
+      padding-left: 0.2rem;
+   }
+   &:hover {
+      .bone__dec, .bone__amount, .bone__inc {
+         display: block;
+      }
+   }
+
+   &__icon {
+      height: $size-dice;
+      width: $size-dice;
+      vertical-align: middle;
+      font-size: 0.25rem;
+   }
+   &__settings {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 0.25rem;
+      color: $pri-color;
+      height: fit-content;
+      line-height: 1rem;
+      vertical-align: middle;
+   }
+   &__name{
+      width: 100%;
+      padding-bottom: 0.2rem;
+   }
+   &__amount {
+      position: relative;
+      display: none;
+      height: $size-dice / 4;
+      max-width: $size-dice / 3;
+      font-size: $size-dice / 4;
+      background-color: $pri-color-dark;
+      border: 0px;
+      text-align: center;
+      &:focus {
+         outline: 2px solid rgba(28,110,164,0.16);
+         outline-offset: 0px;
+      }
+    
+      // hide default spin into input
+      &[type=number] {
+         -webkit-appearance: textfield;
+         -moz-appearance: textfield;
+         appearance: textfield;
+      }
+      &::-webkit-inner-spin-button {
+         -webkit-appearance: inner-spin-button;
+         display: inline-block;
+         cursor: default;
+         flex: 0 0 auto;
+         align-self: stretch;
+         -webkit-user-select: none;
+         opacity: 0;
+         pointer-events: none;
+         -webkit-user-modify: read-only;
+      }
+   }
+   &__dec, &__inc {
+      display: none;
+      width: $size-dice / 4;
+      height: $size-dice / 4;
+      background-color: $pri-color-dark;
+      border: 0px;
+      border-style: none;
+      font-size: $size-dice / 4;
+      font-weight: bolder;
+      line-height: $size-dice / 6;
+      cursor: pointer;
+   }
+   &__dec:active, &__inc:active {
+      background-color: $pri-color;
+      color: $pri-color-lightest;
+   }
+   &__dec {
+      border-radius: 5px 0px 0px 5px;
+   }
+   &__inc {
+      border-radius: 0px 5px 5px 0px;
+   }
+}
