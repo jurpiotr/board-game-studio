@@ -1,0 +1,40 @@
+@import "../../../stylings/vars.scss";
+
+.flex-list {
+   display: flex;
+   justify-content: center;
+   margin: 0.2rem;
+   padding: 0.4rem;
+   background-color: rgb(0, 0, 0);
+   border: 2px solid $pri-color-dark;
+   border-radius: 6px;
+}
+
+.tile {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-wrap: wrap;
+   width: 6rem;
+   margin: 0 0.5rem;
+   padding-bottom: 0.4rem;
+   background-color: rgb(48, 48, 48);
+   border: 3px solid $sec-color;
+   border-radius: 6px;
+
+   &__name {
+      width: 100%;
+      margin-bottom: 0.2rem;
+      background-color: $sec-color;
+      font-weight: bolder;
+      text-align: center;
+      vertical-align: middle;
+   }
+   &__icon {
+      width: $size-dice;
+      height: $size-dice;
+   }
+   &__amount {
+      
+   }
+}
