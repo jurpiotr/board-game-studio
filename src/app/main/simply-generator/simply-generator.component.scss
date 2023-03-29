@@ -1,24 +1,33 @@
 @import "../../../stylings/vars.scss";
 
-.flex-list {
+.tiles-container {
    display: flex;
    justify-content: center;
+   flex-wrap: wrap;
    margin: 0.2rem;
-   padding: 0.4rem;
-   background-color: rgb(0, 0, 0);
+   padding: 0 0.2rem;
+   background-color: rgba(0, 0, 0, 0.7);
    border: 2px solid $pri-color-dark;
    border-radius: 6px;
 }
 
+.tiles-header {
+   width: 100%;
+   padding: 0.4rem;
+   color: $pri-color-dark;
+   text-align: center;
+}
+
 .tile {
+   position: relative;
    display: flex;
    justify-content: space-evenly;
    align-items: center;
    flex-wrap: wrap;
    width: 6rem;
-   margin: 0 0.5rem;
+   margin: 0 0.5rem 0.5rem;
    padding-bottom: 0.4rem;
-   background-color: rgb(48, 48, 48);
+   background-color: $sec-color-darkest;
    border: 3px solid $sec-color;
    border-radius: 6px;
 
@@ -26,15 +35,99 @@
       width: 100%;
       margin-bottom: 0.2rem;
       background-color: $sec-color;
-      font-weight: bolder;
       text-align: center;
       vertical-align: middle;
+      color: $pri-color-light;
    }
    &__icon {
       width: $size-dice;
       height: $size-dice;
    }
    &__amount {
-      
+      color: $sec-color-lightest
+   }
+
+   &__cross {
+      $area: 1rem;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $area;
+      height: $area;
+      background: rgba(141, 0, 0, 0.185);
+      border-radius: 50%;
+      transition: background 0.3s linear;
+      cursor: pointer;
+      &:hover {
+         background: rgba(141, 0, 0, 0.575);
+        // transition: background 1s linear;
+      }
+   
+      &:before, &:after {
+         content: '';
+         position: absolute;
+         display: block;
+         height: 2px;
+         width: $area * 0.7;
+         background: rgba(0, 0, 0, 1);
+         border-radius: 1rem;
+      }
+      &:before {
+         transform: rotate(45deg);
+      }
+      &:after {
+         transform: rotate(-45deg);
+      }
+   }
+}
+
+.results-header {
+   margin-top: 0.8rem;
+   margin-left: 0.6rem;
+   color: $pri-color-light;
+   text-shadow: 0 0 3px rgb(0, 0, 0);
+
+}
+.results-list {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0.3rem;
+   padding: 0.2rem;
+   color: $pri-color-light;
+   border-width: 2px;
+   border-style: solid;
+   border-image-slice: 1;
+   border-image-source: linear-gradient(to right, $sec-color-light, rgba(0, 0, 0, 0) 90%);
+   border-left: 0;
+   border-right: 0;
+   border-top: 0;
+}
+.result {
+   margin: 0.2rem;
+   padding: 0.1rem 0.4rem;
+   border-radius: 50px;
+   box-shadow:  inset -1px 1px 4px $sec-color-darkest,
+   inset 1px -1px 5px $sec-color-light, 
+   inset -3px 1px 5px $sec-color-lightest;
+
+   &__name {
+      position: relative;
+      transform: scale3d(2);
+      left: -0.2rem;
+      height: 1rem;
+      padding: 0.1rem 0.6rem;
+      box-shadow: 1px 0px 7px #000000e3,
+      inset -2px 1px 8px $sec-color-light;
+      border-radius: 50px;
+      color: $pri-color-lightest;
+   }
+   &__score {
+      margin: 0.1rem;
+      padding: 0rem 0.2rem;
+
    }
 }
