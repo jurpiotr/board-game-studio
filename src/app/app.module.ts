@@ -9,6 +9,7 @@ import { PentagonalTrapezohedronComponent } from './dices/pentagonal-trapezohedr
 import { HeaderComponent } from './header/header.component';
 import { DicePanelComponent } from './dices/dice-panel/dice-panel.component';
 import { SimplyGeneratorComponent } from './dices/simply-generator/simply-generator.component';
+import { CreatorComponent } from './dices/creator/creator.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SimplyGeneratorComponent } from './dices/simply-generator/simply-genera
     PentagonalTrapezohedronComponent,
     HeaderComponent,
     DicePanelComponent,
-    SimplyGeneratorComponent
+    SimplyGeneratorComponent,
+    CreatorComponent
   ],
   imports: [
     BrowserModule,

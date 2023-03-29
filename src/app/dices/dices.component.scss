@@ -16,17 +16,16 @@
    box-shadow:  inset 0 0 0.2rem 0rem $sec-color-darkest;
    cursor: pointer;
    transition: all 0.3s;
-   &:hover {
+   &:hover:not(&.active) {
     box-shadow:  inset 0 0 0.2rem 0rem $pri-color;
     color: $pri-color;
     transition: all 0.3s;
- }
-   &:active {
-      background-color: $sec-color;
-      box-shadow:  inset 0 0 0.2rem 0rem $pri-color;
-      color: $pri-color-lightest;
-
-      transition: all 0.3s;
    }
  }
+}
+.nav__option:active, .active {
+  background-color: $sec-color;
+  box-shadow:  inset 0 0 0.2rem 0rem $pri-color;
+  color: $pri-color-lightest;
+  transition: all 0.3s;
 }
