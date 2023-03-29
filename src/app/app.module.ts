@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DodecahedronComponent } from './dodecahedron/dodecahedron.component';
-import { MainComponent } from './main/main.component';
-import { PentagonalTrapezohedronComponent } from './pentagonal-trapezohedron/pentagonal-trapezohedron.component';
+import { DodecahedronComponent } from './dices/dodecahedron/dodecahedron.component';
+import { DicesComponent } from './dices/dices.component';
+import { PentagonalTrapezohedronComponent } from './dices/pentagonal-trapezohedron/pentagonal-trapezohedron.component';
 import { HeaderComponent } from './header/header.component';
-import { DicePanelComponent } from './dice-panel/dice-panel.component';
-import { SimplyGeneratorComponent } from './main/simply-generator/simply-generator.component';
+import { DicePanelComponent } from './dices/dice-panel/dice-panel.component';
+import { SimplyGeneratorComponent } from './dices/simply-generator/simply-generator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DodecahedronComponent,
-    MainComponent,
+    DicesComponent,
     PentagonalTrapezohedronComponent,
     HeaderComponent,
     DicePanelComponent,
