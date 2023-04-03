@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PentagonalTrapezohedronComponent } from './pentagonal-trapezohedron.component';
+import { PentagonalTrapezohedronComponent } from './deltohedron.component';
 
 describe('PentagonalTrapezohedronComponent', () => {
   let component: PentagonalTrapezohedronComponent;
