@@ -4,6 +4,34 @@
    <div class="nav__option" routerLink="players-mode" routerLinkActive="active">Players Mode</div>
    <div class="nav__option" routerLink="probability" routerLinkActive="active">Probability</div>
 </div>
+
+<div class="tiles-container">
+   <h4 class="tiles-header">Chosen dices:</h4>
+   <div class="info-warning" *ngIf="dices.length === 0">Dices not chosen. Please choose a dice from the left menu</div>
+   <div class="tile" *ngFor="let dice of dices">
+      <div class="tile__name">{{ dice.data.name }}</div>
+      <img *ngIf="!dice.component" class="tile__icon" src="../assets/logo.png">
+      <div *ngIf="dice.component" class="bone__icon">
+         <ng-container *ngComponentOutlet="dice.component;"></ng-container>
+      </div>
+      <div class="tile__amount">{{ dice.data.amount}}</div>
+      <span class="tile__cross"></span>
+   </div>
+
+   <!-- <div class="tile">
+      <div class="tile__name">D4</div>
+      <img class="tile__icon" src="../assets/logo.png">
+      <div class="tile__amount">x1</div>
+      <span class="tile__cross"></span>
+   </div>
+   <div class="tile">
+      <div class="tile__name">D10</div>
+      <img class="tile__icon" src="../assets/logo.png">
+      <div class="tile__amount">x21</div>
+      <span class="tile__cross"></span>
+   </div> -->
+</div>
+
 <router-outlet></router-outlet>
 
 <p>.</p>

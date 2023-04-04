@@ -1,4 +1,4 @@
- import { Component, Injector, OnInit } from '@angular/core';
+ import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
  import { DodecahedronComponent } from '../dodecahedron/dodecahedron.component';
  import { DeltohedronComponent } from '../deltohedron/deltohedron.component';
  import { Dice } from '../model';
@@ -83,5 +83,11 @@ export class DicePanelComponent implements OnInit {
         dice.data.amount += delta;
       }
     };
+  }
+  @Output() dicesSaved = new EventEmitter();
+  
+  onAddDice(dice: Dice){
+    console.log(dice);
+    this.dicesSaved.emit(dice);
   }
 }

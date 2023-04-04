@@ -11,5 +11,4 @@ export class SimplyGeneratorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

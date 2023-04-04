@@ -3,9 +3,11 @@
 </h4>
 <ul class="selector-dices">
    <li class="bone" *ngFor="let dice of dices">
-      <img *ngIf="!dice.component" class="bone__icon" src="../assets/logo.png">
-      <div *ngIf="dice.component" class="bone__icon">
-         <ng-container *ngComponentOutlet="dice.component; injector: componentInjector;"></ng-container>
+      <div (click)="onAddDice(dice)">
+         <img *ngIf="!dice.component" class="bone__icon" src="../assets/logo.png">
+         <div *ngIf="dice.component" class="bone__icon">
+            <ng-container *ngComponentOutlet="dice.component; injector: componentInjector;"></ng-container>
+         </div>
       </div>
       <div class="bone__settings">
          <span class="bone__name">{{ dice.data.name }}</span>
