@@ -9,7 +9,9 @@
    <h4 class="tiles-header">Chosen dices:</h4>
    <div class="info-warning" *ngIf="dices.length === 0">Dices not chosen. Please choose a dice from the left menu</div>
    <div class="tile" *ngFor="let dice of dices">
-      <div class="tile__name">{{ dice.data.name }}</div>
+      <div class="tile__container-name">
+         <div class="tile__name">{{ dice.data.name }}</div>
+      </div>
       <img *ngIf="!dice.component" class="tile__icon" src="../assets/logo.png">
       <div *ngIf="dice.component" class="bone__icon">
          <ng-container *ngComponentOutlet="dice.component;"></ng-container>
