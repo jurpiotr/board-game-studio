@@ -3,11 +3,11 @@
 
    <div class="section" role="section">
       <div class="section__panel section__kind-of-dices">
-         <dice-panel (dicesSaved)="onDiceAdded($event)"></dice-panel>
+         <dice-panel [removedDice]="diceToRemove" (dicesSaved)="onDiceAdded($event)" (diceRemoved)="onDiceRemoved($event)"></dice-panel>
       </div>
 
       <div class="section__panel section__results">
-         <dices-result [dices]="storedDices"></dices-result>
+         <dices-result [dices]="storedDices" (diceRemoved)="onDiceRemoved($event)"></dices-result>
       </div> 
 
    </div>

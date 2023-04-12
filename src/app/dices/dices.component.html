@@ -17,7 +17,7 @@
          <ng-container *ngComponentOutlet="dice.component;"></ng-container>
       </div>
       <div class="tile__amount">{{ dice.data.amount}}</div>
-      <span class="tile__cross"></span>
+      <span class="tile__cross" (click)="onRemoveDice(dice)"></span>
    </div>
 
    <!-- <div class="tile">
@@ -37,7 +37,6 @@
 <router-outlet></router-outlet>
 
 <p>.</p>
-<p>.</p><p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
@@ -52,14 +51,18 @@
 <p>.</p>
 <p>.</p>
 <p>.</p>
-<p>.</p><p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
-<p>.</p><p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>

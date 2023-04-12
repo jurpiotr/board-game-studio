@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dice } from './model';
 
 @Component({
@@ -12,5 +12,11 @@ export class DicesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  @Input() dices: Dice[] = []
+  @Input() dices: Dice[] = [];
+
+  @Output() diceRemoved = new EventEmitter();
+  
+  onRemoveDice(dice: Dice) {
+    this.diceRemoved.emit(dice);
+  }
 }

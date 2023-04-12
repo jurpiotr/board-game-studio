@@ -3,16 +3,16 @@
 </h4>
 <ul class="selector-dices">
    <li class="bone" *ngFor="let dice of dices">
-      <div (click)="onAddDice(dice)">
+      <div (click)="changeAmount(dice)">
          <img *ngIf="!dice.component" class="bone__icon" src="../assets/logo.png">
          <div *ngIf="dice.component" class="bone__icon">
             <ng-container *ngComponentOutlet="dice.component; injector: componentInjector;"></ng-container>
          </div>
       </div>
       <div class="bone__settings">
-         <span class="bone__name">{{ dice.data.name }}</span>
+         <span class="bone__name" (click)="changeAmount(dice)">{{ dice.data.name }}</span>
          <button class="bone__dec" (click)="changeAmount(dice,-1);$event.target">❰</button>
-         <input type="number" value="{{dice.data.amount}}" min="1" class="bone__amount">
+         <input disabled type="number" value="{{dice.data.amount}}" min="1" class="bone__amount">
          <button class="bone__inc" (click)="changeAmount(dice,1)">❱</button>
       </div>
    </li>
