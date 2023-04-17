@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Dice } from './dices/model';
+import { DicesService } from './dices.service';
 
 
 @Component({
@@ -12,23 +13,17 @@ export class AppComponent {
   storedDices: Dice[] = [];
   diceToRemove!: Dice;
 
+  constructor(private dicesService: DicesService) {}
+  
+  ngOnInit(): void {
+    this.storedDices = this.dicesService.getDices();
+  }
+
   onDiceAdded(dice: Dice) {
-    let isDice = false;
-    this.storedDices.forEach(d => {
-      if(d.data.amount && dice == d) {
-        isDice = true; 
-      };
-    });
-    if(!isDice) this.storedDices.push(dice);
+    this.dicesService.addDices(dice)
   }
   
   onDiceRemoved(dice: Dice) {
-    this.storedDices.forEach((d: Dice, index: number) => {
-      if(dice == d) {
-        this.diceToRemove = {...dice};
-        d.data.amount = 0;
-        this.storedDices.splice(index, 1);
-      };
-    });
+    this.diceToRemove = this.dicesService.removeDices(dice);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DicesService } from 'src/app/dices.service';
 
 @Component({
   selector: 'simply-generator',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simply-generator.component.scss']
 })
 export class SimplyGeneratorComponent implements OnInit {
-
-  constructor() { }
+  results: Array<any> = [];
+  constructor(private dicesService: DicesService) { }
 
   ngOnInit(): void {
+    this.results = this.dicesService.getResults();
   }
+
 }

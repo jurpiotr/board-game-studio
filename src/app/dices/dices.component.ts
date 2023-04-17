@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dice } from './model';
+import { DicesService } from '../dices.service';
 
 @Component({
   selector: 'dices-result',
@@ -7,16 +8,23 @@ import { Dice } from './model';
   styleUrls: ['./dices.component.scss']
 })
 export class DicesComponent implements OnInit {
+  dices: Dice[] = [];
 
-  constructor() { }
+  constructor(private dicesService: DicesService) {}
 
   ngOnInit(): void {
+    this.dices = this.dicesService.getDices();
   }
-  @Input() dices: Dice[] = [];
 
   @Output() diceRemoved = new EventEmitter();
   
   onRemoveDice(dice: Dice) {
     this.diceRemoved.emit(dice);
+  }
+  getDices(){
+    return this.dices;
+  }
+  onGenerateResults() {
+    return this.dicesService.saveResults();    
   }
 }

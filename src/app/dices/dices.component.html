@@ -5,9 +5,9 @@
    <div class="nav__option" routerLink="probability" routerLinkActive="active">Probability</div>
 </div>
 
-<div class="tiles-container">
-   <h4 class="tiles-header">Chosen dices:</h4>
-   <div class="info-warning" *ngIf="dices.length === 0">Dices not chosen. Please choose a dice from the left menu</div>
+<div class="tiles">
+   <h4 class="tiles__header">Chosen dices:</h4>
+   <div class="tiles__warning" *ngIf="dices.length === 0">Dices not chosen. Please choose a dice from the left menu</div>
    <div class="tile" *ngFor="let dice of dices">
       <div class="tile__container-name">
          <div class="tile__name">{{ dice.data.name }}</div>
@@ -20,19 +20,11 @@
       <span class="tile__cross" (click)="onRemoveDice(dice)"></span>
    </div>
 
-   <!-- <div class="tile">
-      <div class="tile__name">D4</div>
-      <img class="tile__icon" src="../assets/logo.png">
-      <div class="tile__amount">x1</div>
-      <span class="tile__cross"></span>
+   <div class="tiles__start">
+      <div class="tiles__start-btn" *ngIf="dices.length !== 0" (click)="onGenerateResults()">START</div>
    </div>
-   <div class="tile">
-      <div class="tile__name">D10</div>
-      <img class="tile__icon" src="../assets/logo.png">
-      <div class="tile__amount">x21</div>
-      <span class="tile__cross"></span>
-   </div> -->
 </div>
+
 
 <router-outlet></router-outlet>
 

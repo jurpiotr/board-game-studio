@@ -1,157 +1,216 @@
 @import "../../stylings/vars.scss";
 
 .nav {
-   position: relative;
-   transform: translateY(-50%);
-   display: flex;
-   justify-content: center;
-   width: 100%;
+	position: relative;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: center;
+	width: 100%;
 
- &__option {
-   margin: 0 auto;
-   padding: 8px;
-   background-color: $sec-color-dark;
-   border-radius: 3px;
-   color: $sec-color-lightest;
-   box-shadow:  inset 0 0 0.2rem 0rem $sec-color-darkest;
-   cursor: pointer;
-   transition: all 0.3s;
-   &:hover:not(&.active) {
-    box-shadow:  inset 0 0 0.2rem 0rem $pri-color;
-    color: $pri-color;
-    transition: all 0.3s;
-   }
- }
-}
-.nav__option:active, .active {
-  background-color: $sec-color;
-  box-shadow:  inset 0 0 0.2rem 0rem $pri-color;
-  color: $pri-color-lightest;
-  transition: all 0.3s;
+	&__option {
+		margin: 0 auto;
+		padding: 8px;
+		background-color: $sec-color-dark;
+		border-radius: 3px;
+		color: $sec-color-lightest;
+		box-shadow: inset 0 0 0.2rem 0rem $sec-color-darkest;
+		cursor: pointer;
+		transition: all 0.3s;
+
+		&:hover:not(&.active) {
+			box-shadow: inset 0 0 0.2rem 0rem $pri-color;
+			color: $pri-color;
+			transition: all 0.3s;
+		}
+	}
 }
 
-
-.tiles-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0.2rem;
-  padding: 0 0.2rem 1rem;
-  background-color: rgba(0, 0, 0, 0.7);
-  border: 2px solid $pri-color-dark;
-  border-radius: 6px;
+.nav__option:active,
+.active {
+	background-color: $sec-color;
+	box-shadow: inset 0 0 0.2rem 0rem $pri-color;
+	color: $pri-color-lightest;
+	transition: all 0.3s;
 }
 
-.tiles-header {
-  width: 100%;
-  padding: 0.4rem;
-  color: $pri-color-dark;
-  text-align: center;
+
+.tiles {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 0.2rem;
+	padding: 0 0.2rem 0.2rem;
+	background-color: rgba(0, 0, 0, 0.7);
+	border: 2px solid $pri-color-dark;
+	border-radius: 6px;
+
+	&__header {
+		width: 100%;
+		padding: 0.4rem;
+		color: $pri-color-dark;
+		text-align: center;
+	}
+	&__warning {
+		color: rgb(141, 63, 0);
+		font-size: smaller;
+	}
+	&__start {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin: 0.5rem 0;
+		text-align: center;
+	}
+	&__start-btn {
+		position: relative;
+		width: auto;
+		margin: 0.5rem 0;
+		padding: 0.4rem;
+		background-image: linear-gradient(to top, $sec-color-dark 0%, $sec-color 50%, $sec-color-dark 100%);
+		background-size: 100% 600%;
+		box-shadow: 0 0px 4px 0px $pri-color;
+		border-radius: 0.3rem;
+		transition: background-size .2s ease-in-out;
+		color: rgb(141, 63, 0);
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		cursor: pointer;
+		&:hover {
+			background-size: 100% 100%;
+			box-shadow: 0 0px 4px 0px $pri-color-light;
+		}
+		&:active {
+			box-shadow: 0 0px 4px 0px $pri-color-lightest;
+			color: rgb(194, 87, 0);
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 4px;
+			z-index: -1;
+			background: $sec-color-dark;
+			top: 2px;
+			bottom: 2px;
+			right: 2px;
+			left: 2px;
+			width: calc(100% - 4px);
+			height: calc(100% - 4px);
+		}
+	}
 }
+
+
 
 .tile {
-  position: relative;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 6rem;
-  margin: 0 0.5rem 0.5rem;
-  padding-bottom: 0.4rem;
-  background-color: $sec-color-darkest;
-  border: 3px solid $sec-color;
-  border-radius: 6px;
-  
-  &__container-name {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   width: 100%;
-   height: 2rem;
-   margin-bottom: 0.2rem;
-   background-color: $sec-color;
-   color: $pri-color-light;
-   vertical-align: middle;
-  }
-  &__name {
-     width: 100%;
-     background-color: $sec-color;
-     text-align: center;
-     vertical-align: middle;
-     color: $pri-color-light;
-     line-height: 1rem;
-     
-  }
-  &__icon {
-     width: $size-dice;
-     height: $size-dice;
-  }
-  &__amount {
-     color: $sec-color-lightest
-  }
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 6rem;
+	margin: 0 0.5rem 0.5rem;
+	padding-bottom: 0.4rem;
+	background-color: $sec-color-darkest;
+	border: 3px solid $sec-color;
+	border-radius: 6px;
 
-  &__cross {
-     $area: 1rem;
+	&__container-name {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 100%;
+		height: 2rem;
+		margin-bottom: 0.2rem;
+		background-color: $sec-color;
+		color: $pri-color-light;
+		vertical-align: middle;
+	}
 
-     position: absolute;
-     top: 0;
-     right: 0;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     width: $area;
-     height: $area;
-     background: rgba(141, 0, 0, 0.185);
-     border-radius: 50%;
-     transition: background 0.3s linear;
-     cursor: pointer;
-     &:hover {
-        background: rgba(141, 0, 0, 0.575);
-     }
-  
-     &:before, &:after {
-        content: '';
-        position: absolute;
-        display: block;
-        height: 2px;
-        width: $area * 0.7;
-        background: rgba(0, 0, 0, 1);
-        border-radius: 1rem;
-     }
-     &:before {
-        transform: rotate(45deg);
-     }
-     &:after {
-        transform: rotate(-45deg);
-     }
-  }
+	&__name {
+		width: 100%;
+		background-color: $sec-color;
+		text-align: center;
+		vertical-align: middle;
+		color: $pri-color-light;
+		line-height: 1rem;
+
+	}
+
+	&__icon {
+		width: $size-dice;
+		height: $size-dice;
+	}
+
+	&__amount {
+		color: $sec-color-lightest
+	}
+
+	&__cross {
+		$area: 1rem;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: $area;
+		height: $area;
+		background: rgba(141, 0, 0, 0.185);
+		border-radius: 50%;
+		transition: background 0.3s linear;
+		cursor: pointer;
+
+		&:hover {
+			background: rgba(141, 0, 0, 0.575);
+		}
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			display: block;
+			height: 2px;
+			width: $area * 0.7;
+			background: rgba(0, 0, 0, 1);
+			border-radius: 1rem;
+		}
+
+		&:before {
+			transform: rotate(45deg);
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+		}
+	}
 }
 
 .bone {
-   display: flex;
-   align-items: center;
-   padding: 0.25rem;
+	display: flex;
+	align-items: center;
+	padding: 0.25rem;
 
-   &:hover .bone__name {
-      font-size: $size-dice / 4;
-      padding-left: 0.2rem;
-   }
-   &:hover {
-      .bone__dec, .bone__amount, .bone__inc {
-         display: block;
-      }
-   }
+	&:hover .bone__name {
+		font-size: $size-dice / 4;
+		padding-left: 0.2rem;
+	}
 
-   &__icon {
-      height: $size-dice;
-      width: $size-dice;
-      vertical-align: middle;
-      font-size: 0.25rem;
-      cursor: copy;
-   }
-}
+	&:hover {
 
-.info-warning {
-   color:rgb(141, 63, 0);
-   font-size: smaller;
+		.bone__dec,
+		.bone__amount,
+		.bone__inc {
+			display: block;
+		}
+	}
+
+	&__icon {
+		height: $size-dice;
+		width: $size-dice;
+		vertical-align: middle;
+		font-size: 0.25rem;
+		cursor: copy;
+	}
 }

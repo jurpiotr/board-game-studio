@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { DicePanelComponent } from './dices/dice-panel/dice-panel.component';
 import { SimplyGeneratorComponent } from './dices/simply-generator/simply-generator.component';
 import { CreatorComponent } from './dices/creator/creator.component';
+import { DicesService } from './dices.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CreatorComponent } from './dices/creator/creator.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

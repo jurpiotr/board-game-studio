@@ -34,7 +34,7 @@ export class DicePanelComponent implements OnInit, OnChanges {
       component: null,
       data: {
 			name: 'D6',
-			value: 4,
+			value: 6,
 			img: '../assets/logo.png',
 			amount: 0,
       },
@@ -43,7 +43,7 @@ export class DicePanelComponent implements OnInit, OnChanges {
       component: null,
       data: {
 			name: 'D8',
-			value: 4,
+			value: 10,
 			img: '../assets/logo.png',
 			amount: 0,
       },
@@ -52,7 +52,7 @@ export class DicePanelComponent implements OnInit, OnChanges {
       component: DeltohedronComponent,
       data: {
 			name: 'D10',
-			value: 4,
+			value: 10,
 			model: true,
 			amount: 0,
       },
@@ -93,7 +93,6 @@ export class DicePanelComponent implements OnInit, OnChanges {
    @Output() diceRemoved = new EventEmitter();
 
    ngOnChanges(changes: SimpleChanges) {
-      console.log(changes['removedDice']);
       const currDice = changes['removedDice'].currentValue;
       if (!changes['removedDice'].isFirstChange()) {
 			for (const dice of this.dices) {
@@ -107,7 +106,6 @@ export class DicePanelComponent implements OnInit, OnChanges {
       if (dice.data.amount !== undefined && dice.data.amount + delta >= 0) {
       dice.data.amount += delta;
 			if (dice.data.amount === 0) {
-				console.log('REMOVED');
 				this.diceRemoved.emit(dice);
 				return;
 			} else {
@@ -118,7 +116,6 @@ export class DicePanelComponent implements OnInit, OnChanges {
 
    onAddDice(dice: Dice) {
       if (dice.data.amount !== undefined && dice.data.amount >= 0) {
-			console.log('oppopopoppop');
 			dice.data.amount += 1;
 			this.dicesSaved.emit(dice);
 		}
