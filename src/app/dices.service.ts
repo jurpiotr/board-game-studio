@@ -47,10 +47,15 @@ export class DicesService {
         ...dice.data, 
         valuesDice: this.getRandomValue(dice.data.value)});
     })
-    this.results.push(dataDices);
+    this.results.unshift(dataDices);
   }
 
   getRandomValue(val:number) {
     return ( Math.floor(Math.random() * val) + 1 )
+  }
+
+  clearResults() {
+    this.results = [];
+    
   }
 }

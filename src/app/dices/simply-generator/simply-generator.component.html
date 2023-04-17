@@ -1,7 +1,11 @@
-<h4 class="results-header" *ngIf="results.length !== 0">Dices Results</h4>
-<div class="results-list" *ngFor="let dices of results">
+<div class="results">
+   <h4 class="results__header" *ngIf="results.length !== 0">Dices Results</h4>
+   <div class="results__clear" *ngIf="results.length !== 0" (click)="onClearResults()">CLEAR</div>
+   <div class="results__list" *ngFor="let dices of results, let i = index">
+   <span class="results__index">{{ results.length - i + ". "}}</span>
    <div class="result" *ngFor="let dice of dices">
       <span class="result__name">{{ dice.name }}</span>
       <span class="result__score">{{ dice.valuesDice }}</span>
+   </div>
    </div>
 </div>

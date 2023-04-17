@@ -13,5 +13,8 @@ export class SimplyGeneratorComponent implements OnInit {
   ngOnInit(): void {
     this.results = this.dicesService.getResults();
   }
-
+  onClearResults() {
+    this.dicesService.clearResults();
+    this.results = this.dicesService.getResults();
+  }
 }
