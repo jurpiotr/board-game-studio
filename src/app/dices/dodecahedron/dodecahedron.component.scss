@@ -81,7 +81,7 @@
           }
         }
         &:nth-of-type(#{$i}) {
-          background-color: $sec-color;
+          background-color: $sec-color-lightest;
           &::after {
             content: "#{$i}";
             width: 100%;

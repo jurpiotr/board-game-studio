@@ -21,43 +21,33 @@ $heightConnectingCubes: ($diffDeflectionVertexToBase / math.cos($angleDeflection
 
 .top1{ 
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(0deg) rotateX($angleDeflection);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top2{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(72deg) rotateX($angleDeflection);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top3{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(144deg) rotateX($angleDeflection);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top4{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(216deg) rotateX($angleDeflection);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top5{
    transform: translate3d(0px, 0px, $heightDeflectionTriangles * -1em) rotateZ(288deg) rotateX($angleDeflection );
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top6{
    transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(36deg) rotateX($angleDeflection * -1) rotateY(180deg);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top7{
    transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(108deg) rotateX($angleDeflection * -1) rotateY(180deg);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top8{
    transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(180deg) rotateX($angleDeflection * -1) rotateY(180deg);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top9{
    transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(252deg) rotateX($angleDeflection * -1) rotateY(180deg);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .top10{
    transform: translate3d(0px, 0px, $distance-top-from-bottom-triangles + $heightDeflectionTriangles + em) rotateZ(324deg) rotateX($angleDeflection * -1) rotateY(180deg);
-   border-bottom: $unitWidthSides solid $color_dice;
 }
 .obj3d{
    width: $size-dice;
@@ -71,7 +61,7 @@ $heightConnectingCubes: ($diffDeflectionVertexToBase / math.cos($angleDeflection
    height: 100%;
    transform-style: preserve-3d;
    transform-origin: center;
-   transform: rotateX(90deg) rotateZ(0deg);
+   transform: rotateX(90deg) rotateZ(190deg);
 }
 
 .deltoid {
@@ -83,15 +73,25 @@ $heightConnectingCubes: ($diffDeflectionVertexToBase / math.cos($angleDeflection
    backface-visibility: hidden;
    border-left: $unitHeightSide solid transparent;
    border-right: $unitHeightSide solid transparent;
-}
-.deltoid::after {
-   content: '';
-   position: absolute;
-   top: $unitWidthSides;
-   left: -$unitHeightSide;
-   width: 0;
-   border-left: $unitHeightSide solid transparent;
-   border-right: $unitHeightSide solid transparent;
-   border-top: $heightConnectingCubes solid $color_dice;
+   border-bottom: $unitWidthSides solid $sec-color-lightest;
+   
 
+   &::after {
+      content: '';
+      position: absolute;
+      top: $unitWidthSides;
+      left: -$unitHeightSide;
+      width: 0;
+      border-left: $unitHeightSide solid transparent;
+      border-right: $unitHeightSide solid transparent;
+      border-top: $heightConnectingCubes solid $sec-color-lightest;
+   }
+}
+.deltoid-text {
+   position: absolute;
+   transform: translateX(-50%) translateY(80%);
+   height: 1rem;
+   font-size: 0.65rem;
+   text-align: center;
+   
 }

@@ -1,14 +1,14 @@
+<!-- <div class="obj3d">
+   <div class="dice">
+      <ng-template ngFor let-i="index" [ngForOf]="[].constructor(10)">
+         <div class="deltoid top{{i+1}}" data-value="1"></div>
+      </ng-template>
+   </div>
+</div> -->
 <div class="obj3d">
    <div class="dice">
-      <div class="deltoid top1"></div>
-      <div class="deltoid top2"></div>
-      <div class="deltoid top3"></div>
-      <div class="deltoid top4"></div>
-      <div class="deltoid top5"></div>
-      <div class="deltoid top6"></div>
-      <div class="deltoid top7"></div>
-      <div class="deltoid top8"></div>
-      <div class="deltoid top9"></div>
-      <div class="deltoid top10"></div>
+         <div *ngFor="let c of [].constructor(10); let i = index" class="deltoid top{{i+1}}">
+            <span #side class="deltoid-text" attr.data-value="{{i+1}}">{{i+1}}</span>
+         </div>
    </div>
 </div>
