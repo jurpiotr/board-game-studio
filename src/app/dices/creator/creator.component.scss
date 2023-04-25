@@ -1,0 +1,123 @@
+@import "../../../stylings/vars.scss";
+
+.container {
+   min-height: 6rem;
+   margin: 1rem;
+   background: $sec-color-light;
+   border: 1px solid $sec-color-lightest;
+   border-radius: 1rem;
+   box-shadow: 0 0 0.5rem 0.1rem rgb(0,0,0);
+}
+
+.title {
+   margin: 1rem;
+   text-align: center;
+   color: $formal-c-light;
+}
+
+.creator {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 1rem;
+   
+   &__one-aside {
+      width: 8rem;
+   }
+
+   &__two-aside {
+      width: 65%;
+      flex-grow: 2;
+   }
+
+   &__box-icon {
+      width: 6rem;
+      height: 6rem;
+      margin: 0.3rem 1rem;
+      padding: 0.5rem;
+      background: linear-gradient(45deg, $sec-color 0%, $sec-color-light 100%);
+      box-shadow: -0.1rem -0.1rem 0.2rem rgba(255, 255, 255, 0.1), 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+      box-shadow: inset -0.1rem -0.1rem 0.2rem $formal-c-darkest, inset 0.1rem 0.1rem 0.2rem $formal-c-dark;
+      border-radius: 0.4rem;
+      text-align: center;
+      line-height: 4.4rem;
+      font-size: 2rem;
+   }
+   &__icon {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, $formal-c-lightest, $formal-c-darkest);
+      border-radius: 50%;
+      overflow: hidden;
+      text-shadow: -1px -1px 3px $formal-c-lightest, 1px 1px 3px $formal-c-darkest, ;
+
+   }
+   &__option {
+      display: flex;
+      align-items: center;
+      margin: 0.4rem 0.3rem 0.4rem 0;
+      padding: 0.5rem;
+      background: linear-gradient(90deg, $sec-color 0%, $sec-color-light 100%);
+      box-shadow: -0.1rem 0 0.2rem rgba(255, 255, 255, 0.1), 0.1rem 0 0.2rem rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+   }
+   &__label {
+      display: inline-block;
+      width: 26%;
+      margin: 0 0.5rem;
+      font-size: 0.8rem;
+      color: $formal-c;
+   }
+
+   &__select-value {
+      font-size: 0.8rem;
+      background-color: transparent;
+      border: 0;
+      color: $formal-c;
+      & > option {
+         font-size: 0.7rem;
+      }
+   }
+   &__select-option {
+      font-size: 0.8rem;
+   }
+   &__input {
+      display: inline-block;
+      max-width: 70%;
+      height: 1.8rem;
+      vertical-align: middle;
+      margin: 0 0.2rem;
+      padding: 0.4rem;
+      background: linear-gradient(90deg, $sec-color-light 0%, $sec-color-lightest 200%);
+      border-width: 0rem;
+      border-radius: 0.2rem;
+      font-size: 0.9rem;
+      text-align: center;
+      color: $formal-c-lightest;
+      &:focus {
+         outline: 1px solid $formal-c;
+         line-height: 1rem;
+      }
+      & > option {
+         font-size: 0.7rem;
+      }
+   }
+}
+
+.create-btn {
+   width: fit-content;
+   margin: 1rem auto;
+   padding: 0.5rem;
+   background-color: $formal-c-lightest;
+   border: 2px solid $formal-c-dark;
+   border-radius: 1rem;
+   box-shadow: 0 0 6px $formal-c-dark, inset 0 0 6px $formal-c-dark;
+   cursor: pointer;
+   transition: all 0.3s;
+   &:hover {
+      background-color: $formal-c-dark;
+      border: 2px solid $sec-color-lightest;
+      box-shadow: 0 0 6px $sec-color-lightest, inset 0 0 6px $formal-c-lightest;
+      color: $formal-c-lightest;
+   }
+}
