@@ -16,6 +16,7 @@
 }
 
 .creator {
+   position: relative;
    display: flex;
    flex-wrap: wrap;
    margin: 1rem;
@@ -63,13 +64,13 @@
    }
    &__label {
       display: inline-block;
-      width: 26%;
+      min-width: 20%;
       margin: 0 0.5rem;
       font-size: 0.8rem;
       color: $formal-c;
    }
 
-   &__select-value {
+   &__values-mode {
       font-size: 0.8rem;
       background-color: transparent;
       border: 0;
@@ -78,16 +79,17 @@
          font-size: 0.7rem;
       }
    }
-   &__select-option {
+   &__values-option {
       font-size: 0.8rem;
    }
+
    &__input {
       display: inline-block;
       max-width: 70%;
       height: 1.8rem;
       vertical-align: middle;
-      margin: 0 0.2rem;
-      padding: 0.4rem;
+      margin: 0.2rem;
+      padding: 0.1rem ;
       background: linear-gradient(90deg, $sec-color-light 0%, $sec-color-lightest 200%);
       border-width: 0rem;
       border-radius: 0.2rem;
@@ -101,6 +103,45 @@
       & > option {
          font-size: 0.7rem;
       }
+   }
+   &__select-value {
+
+      display: inline-block;
+      transform: translateX(-70%) rotate(90deg);
+      height: 1.2rem;
+      width: 1.2rem;
+      line-height: 1rem;
+      font-size: 1rem;
+      text-align: center;
+      vertical-align: middle;
+      background-color: $sec-color-light;
+      border: 1px solid $sec-color-lightest;
+      border-radius: 50%;
+      box-shadow: 0 0 10px $sec-color-darkest;
+      color: $sec-color-lightest;
+      cursor: pointer;
+   }
+   &__table-values {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      overflow: hidden;
+      transform: translateX(-30%);
+      background-color: $sec-color-light;
+      border: 1px solid $sec-color-lightest;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 10px $sec-color-darkest;
+      & > span {
+         width: 2rem;
+         padding: 0.2rem;
+         text-align: center;
+         cursor: pointer;
+         &:hover {
+            background-color: $sec-color-lightest;
+            border-radius: 3px;
+         }
+      } 
    }
 }
 
