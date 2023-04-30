@@ -15,3 +15,7 @@ export interface Dice {
 export interface ResultDice extends DataDice {
    valuesDice: number
 }
+
+export interface newDice {
+   values: number[];
+}

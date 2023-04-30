@@ -1,0 +1,35 @@
+@import "../../../stylings/vars.scss";
+
+.table-values {
+   z-index: 1;
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   overflow: hidden;
+   transform: translateX(-30%);
+   background-color: $sec-color-light;
+   border: 1px solid $sec-color-lightest;
+   border-radius: 0.8rem;
+   box-shadow: 0 0 10px $sec-color-darkest;
+   & > span {
+      width: 2rem;
+      padding: 0.2rem;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+         background-color: $sec-color-lightest;
+         border-radius: 3px;
+      }
+   }
+
+}
+.background {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: $sec-color-darkest;
+   opacity: 0.4;
+}

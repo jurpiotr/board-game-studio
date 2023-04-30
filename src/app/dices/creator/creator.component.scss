@@ -105,7 +105,6 @@
       }
    }
    &__select-value {
-
       display: inline-block;
       transform: translateX(-70%) rotate(90deg);
       height: 1.2rem;
@@ -120,28 +119,6 @@
       box-shadow: 0 0 10px $sec-color-darkest;
       color: $sec-color-lightest;
       cursor: pointer;
-   }
-   &__table-values {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      overflow: hidden;
-      transform: translateX(-30%);
-      background-color: $sec-color-light;
-      border: 1px solid $sec-color-lightest;
-      border-radius: 0.8rem;
-      box-shadow: 0 0 10px $sec-color-darkest;
-      & > span {
-         width: 2rem;
-         padding: 0.2rem;
-         text-align: center;
-         cursor: pointer;
-         &:hover {
-            background-color: $sec-color-lightest;
-            border-radius: 3px;
-         }
-      } 
    }
 }
 

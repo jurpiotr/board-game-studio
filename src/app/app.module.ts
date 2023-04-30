@@ -11,6 +11,9 @@ import { DicePanelComponent } from './dices/dice-panel/dice-panel.component';
 import { SimplyGeneratorComponent } from './dices/simply-generator/simply-generator.component';
 import { CreatorComponent } from './dices/creator/creator.component';
 import { DicesService } from './dices.service';
+import { TableValuesComponent } from './dices/table-values/table-values.component';
+import { FormsModule } from '@angular/forms';
+import { ToHexdecimalPipe } from './to-hexdecimal.pipe';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,14 @@ import { DicesService } from './dices.service';
     HeaderComponent,
     DicePanelComponent,
     SimplyGeneratorComponent,
-    CreatorComponent
+    CreatorComponent,
+    TableValuesComponent,
+    ToHexdecimalPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [DicesService],
   bootstrap: [AppComponent]
