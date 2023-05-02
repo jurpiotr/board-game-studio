@@ -12,6 +12,7 @@ import {
 import { DodecahedronComponent } from '../dodecahedron/dodecahedron.component';
 import { DeltohedronComponent } from '../deltohedron/deltohedron.component';
 import { Dice } from '../model';
+import { BasicDicesService } from 'src/app/basic-dices.service';
 
 @Component({
    selector: 'dice-panel',
@@ -20,68 +21,14 @@ import { Dice } from '../model';
 	styleUrls: ['./dice-panel.component.scss'],
 })
 export class DicePanelComponent implements OnInit, OnChanges {
-   dices: Dice[] = [
-   {
-      component: null,
-      data: {
-         name: 'D4',
-         value: 4,
-         img: '../assets/logo.png',
-         amount: 0,
-      },
-	},
-	{
-      component: null,
-      data: {
-			name: 'D6',
-			value: 6,
-			img: '../assets/logo.png',
-			amount: 0,
-      },
-	},
-	{
-      component: null,
-      data: {
-			name: 'D8',
-			value: 10,
-			img: '../assets/logo.png',
-			amount: 0,
-      },
-	},
-	{
-      component: DeltohedronComponent,
-      data: {
-			name: 'D10',
-			value: 10,
-			model: true,
-			amount: 0,
-      },
-	},
-	{
-      component: DeltohedronComponent,
-      data: {
-			name: 'D10 in tens',
-			value: 10 * 10,
-			model: true,
-			amount: 0,
-      },
-	},
-	{
-      component: DodecahedronComponent,
-      data: {
-			name: 'D12',
-			value: 12,
-			model: true,
-			amount: 0,
-      },
-	},
-   ];
-
+   
+   dices: Dice[] = [];
    componentInjector?: Injector;
 
-   constructor(private injector: Injector) {}
+   constructor(private bDS: BasicDicesService, private injector: Injector) {}
 
    ngOnInit() {
+      this.dices = this.bDS.getDices();
       this.componentInjector = Injector.create({
       providers: [{ provide: 'data', useValue: this.dices[0].data }],
       parent: this.injector,

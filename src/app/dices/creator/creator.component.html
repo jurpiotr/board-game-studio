@@ -2,6 +2,7 @@
    <h3 class="title">
       Create your own dice
    </h3>
+   
    <div class="creator">
       <aside class="creator__one-aside">
          <div class="creator__box-icon">
@@ -11,30 +12,31 @@
       <aside class="creator__two-aside">
          <div class="creator__option">
             <label class="creator__label" for="type">TYPE</label>
-            <select class="creator__input">
-               <option>Custom</option>
-               <option>D4</option>
-               <option>D6</option>
-               <option>D8</option>
+            <select class="creator__input" name="newDice2" [(ngModel)]="newDice">
+               <option *ngFor="let dice of dicesCollection" [ngValue]="dice">{{ dice.data.name  | uppercase }}</option>
             </select>
-            <input class="creator__input" id="name" type="text" size="5" placeholder="name">
+            <input *ngIf="newDice.data.name === 'custom'" class="creator__input" id="name" type="text" size="5" placeholder="name">
          </div>
          <div class="creator__option">
             <label class="creator__label" for="sides">SIDES</label>
-            <input class="creator__input" id="sides" type="text" size="6">
+            <input class="creator__input" id="sides" name="dice" type="text" size="6" 
+            [(ngModel)]="newDice.data.values?.length || newDice.data.value"
+            [disabled]="newDice.data.name !== 'custom'">
          </div>
          <div class="creator__option">
             <label class="creator__label" for="values">
                VALUES
-               <select class="creator__values-mode" id="values">
-                  <option class="creator__values-option">MULTI</option>
-                  <option class="creator__values-option">SINGLE</option>
+               <select class="creator__label-mode" id="values">
+                  <option class="creator__label-option">MULTI</option>
+                  <option class="creator__label-option">SINGLE</option>
                </select>
             </label>
-            <div class="creator__values" *ngFor="let newVal of newDice.values; let i = index">
-               <input #val class="creator__input" [id]="i" type="text" size="4" [ngModel]="newVal | toHexdecimal" (ngModelChange)="newVal">
-               <div #values class="creator__select-value" (click)="showTableValues(val.id)">&#10140;</div>
-            </div>
+            <div class="creator__input-values">
+               <div *ngFor="let newVal of newDice.data.values ; let i = index; trackBy:trackByIndex">
+                  <input #val *ngIf="newDice.data.values" class="creator__input" [id]="i" type="text" size="4" name="newVal" [(ngModel)]="newDice.data.values[i]">
+                  <div #values class="creator__select-value" (click)="showTableValues('val.id')">&#10140;</div>
+               </div>
+            </div> 
          </div>
       </aside>
    </div>

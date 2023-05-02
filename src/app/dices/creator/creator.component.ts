@@ -1,7 +1,7 @@
-import { Component, ComponentRef, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { TableValuesComponent } from '../table-values/table-values.component';
-import { newDice } from '../model';
-import { FormsModule } from '@angular/forms';
+import { Dice } from '../model';
+import { BasicDicesService } from 'src/app/basic-dices.service';
 
 @Component({
   selector: 'creator',
@@ -10,17 +10,25 @@ import { FormsModule } from '@angular/forms';
 })
 export class CreatorComponent implements OnInit {
 
-  myEmoji = String.fromCodePoint(8913);
-
   @ViewChild('values', {read: ViewContainerRef}) values!: ViewContainerRef;
   componentRef!: ComponentRef<TableValuesComponent>;
   
-  newDice: newDice = {
-    values: [312,1373]
-  }
-  constructor() { }
+  dicesCollection: Dice[] =  [];
 
-  ngOnInit() { }
+  newDice: Dice = {
+    component: null,
+    data: {
+      name: 'custom',
+      values: []
+    }
+  }
+
+  constructor( private bDS: BasicDicesService ) { }
+
+  ngOnInit() {
+    this.dicesCollection = this.bDS.getDices();
+    this.dicesCollection.unshift(this.newDice)
+  }
 
   showTableValues(idRef: string) {
     this.componentRef = this.values.createComponent(TableValuesComponent);
@@ -31,11 +39,24 @@ export class CreatorComponent implements OnInit {
   }
 
   changeValue($event: number, idRef: string) {
-    if($event !== 0){
+    if($event !== 0 && this.newDice.data.values){
       const numId = parseInt(idRef)
-      this.newDice.values[numId] = $event;
+      this.newDice.data.values[numId] = $event;
     
     }
     this.componentRef.destroy();
   }
+
+  onValueChange(newVal: any, index: any) {
+    if(this.newDice.data.values){
+    this.newDice.data.values[index] = newVal;
+    }
+  }
+
+  trackByIndex(index: number, obj: any): any {
+    return index;
+  }
+
+
+
 }

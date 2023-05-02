@@ -55,6 +55,7 @@
    }
    &__option {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       margin: 0.4rem 0.3rem 0.4rem 0;
       padding: 0.5rem;
@@ -64,13 +65,12 @@
    }
    &__label {
       display: inline-block;
-      min-width: 20%;
+      width: 20%;
       margin: 0 0.5rem;
       font-size: 0.8rem;
       color: $formal-c;
    }
-
-   &__values-mode {
+   &__label-mode {
       font-size: 0.8rem;
       background-color: transparent;
       border: 0;
@@ -79,17 +79,23 @@
          font-size: 0.7rem;
       }
    }
-   &__values-option {
+   &__label-option {
       font-size: 0.8rem;
    }
 
+   &__input-values {
+      display: flex;
+      flex-wrap: wrap;
+      width: 70%;
+      flex-grow: 2;
+   }
+
    &__input {
-      display: inline-block;
-      max-width: 70%;
+      display: inline;
       height: 1.8rem;
       vertical-align: middle;
       margin: 0.2rem;
-      padding: 0.1rem ;
+      padding: 0.2rem;
       background: linear-gradient(90deg, $sec-color-light 0%, $sec-color-lightest 200%);
       border-width: 0rem;
       border-radius: 0.2rem;

@@ -16,7 +16,7 @@ export class DicesComponent implements OnInit {
     this.dices = this.dicesService.getDices();
   }
 
-  @Output() diceRemoved = new EventEmitter();
+  @Output() diceRemoved = new EventEmitter() 
   
   onRemoveDice(dice: Dice) {
     this.diceRemoved.emit(dice);
