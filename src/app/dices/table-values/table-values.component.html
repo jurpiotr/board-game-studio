@@ -1,4 +1,5 @@
 <div class="table-values">
-   <span class="table-value" *ngFor="let value of tableValues" (click)="onValueClick(value)">{{value | toHexdecimal}}</span>
+   <span class="table-value" *ngFor="let value of tableValues" 
+   (click)="onValueClick(value)">{{ value }}</span>
 </div>
-<div class="background" (click)="onValueClick(0)"></div>
+<div class="background" (click)="onValueClick('')"></div> 

@@ -3,7 +3,7 @@ import { Type } from "@angular/core"
 interface DataDice {
    name: string;
    value?: number,
-   values?: number[] | undefined,
+   values?: string[],
    model?: boolean;
    img?: string;
    amount?: number;

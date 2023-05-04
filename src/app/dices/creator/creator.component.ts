@@ -1,4 +1,4 @@
-import { Component, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { TableValuesComponent } from '../table-values/table-values.component';
 import { Dice } from '../model';
 import { BasicDicesService } from 'src/app/basic-dices.service';
@@ -11,8 +11,9 @@ import { BasicDicesService } from 'src/app/basic-dices.service';
 export class CreatorComponent implements OnInit {
 
   @ViewChild('values', {read: ViewContainerRef}) values!: ViewContainerRef;
+
   componentRef!: ComponentRef<TableValuesComponent>;
-  
+
   dicesCollection: Dice[] =  [];
 
   newDice: Dice = {
@@ -22,41 +23,44 @@ export class CreatorComponent implements OnInit {
       values: []
     }
   }
+  activeValue: string = '';
+  activeMode: string = 'multi';
 
-  constructor( private bDS: BasicDicesService ) { }
+  constructor( private bDS: BasicDicesService, private cdRef: ChangeDetectorRef ) { }
 
   ngOnInit() {
     this.dicesCollection = this.bDS.getDices();
     this.dicesCollection.unshift(this.newDice)
   }
 
-  showTableValues(idRef: string) {
+  modeValue() {
+    return this.newDice.data!.values!.length === 0 
+    ? []
+    : this.activeMode !== 'single'
+      ? ['']
+      : this.newDice.data.values;
+  }
+  
+
+  setValuesFromSides() {
+    if(this.newDice.data.name === 'custom') {
+      this.newDice.data.values = [];
+      const arr = Array.from({length: Number(this.newDice.data.value)}, (_, i) => (i+1).toString());
+      this.newDice.data.values.push(...arr);
+    }
+  }
+  showTableValues(i: number) {
     this.componentRef = this.values.createComponent(TableValuesComponent);
-    this.componentRef.instance.valueClick.subscribe(($event) => {
-      this.changeValue($event, idRef);
-    })
+    this.componentRef.instance.valueClick.subscribe((val) => {
+      this.newDice.data.values?.splice(i, 1, val);
+      this.cdRef.detectChanges();
+      this.componentRef.destroy();
+      this.activeValue = val;
+      })
     this.values.insert(this.componentRef.hostView);
   }
 
-  changeValue($event: number, idRef: string) {
-    if($event !== 0 && this.newDice.data.values){
-      const numId = parseInt(idRef)
-      this.newDice.data.values[numId] = $event;
-    
-    }
-    this.componentRef.destroy();
-  }
-
-  onValueChange(newVal: any, index: any) {
-    if(this.newDice.data.values){
-    this.newDice.data.values[index] = newVal;
-    }
-  }
-
-  trackByIndex(index: number, obj: any): any {
+  trackByIndex(index: number) {
     return index;
   }
-
-
-
 }

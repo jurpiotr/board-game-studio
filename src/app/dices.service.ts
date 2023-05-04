@@ -41,11 +41,11 @@ export class DicesService {
   saveResults() {
     let dataDices: ResultDice[] = [];
     
-    this.dices.map((dice, key) => {
+    this.dices.map((dice) => {
       if(dice.data.value)
         dataDices.push({
         ...dice.data, 
-        valuesDice: this.getRandomValue(dice.data.value)});
+        valuesDice: this.getRandomValue(Number(dice.data.value))});
     })
     this.results.unshift(dataDices);
   }
@@ -56,6 +56,5 @@ export class DicesService {
 
   clearResults() {
     this.results = [];
-    
   }
 }

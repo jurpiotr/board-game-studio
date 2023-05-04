@@ -6,35 +6,43 @@
    <div class="creator">
       <aside class="creator__one-aside">
          <div class="creator__box-icon">
-            <div class="creator__icon">&#10249;</div>
+            <div *ngIf="!newDice.component" class="creator__icon">{{ activeValue }}</div>
+            <ng-container *ngIf="newDice.component">
+               <ng-container *ngComponentOutlet="newDice.component"></ng-container>
+            </ng-container>
          </div>
       </aside>
       <aside class="creator__two-aside">
          <div class="creator__option">
             <label class="creator__label" for="type">TYPE</label>
-            <select class="creator__input" name="newDice2" [(ngModel)]="newDice">
-               <option *ngFor="let dice of dicesCollection" [ngValue]="dice">{{ dice.data.name  | uppercase }}</option>
+            <select class="creator__input" name="newDice" [(ngModel)]="newDice">
+               <option *ngFor="let dice of dicesCollection" [ngValue]="dice" (click)="activeValue = dice.data.values!.length.toString()">{{ dice.data.name  | uppercase }}</option>
             </select>
             <input *ngIf="newDice.data.name === 'custom'" class="creator__input" id="name" type="text" size="5" placeholder="name">
          </div>
          <div class="creator__option">
             <label class="creator__label" for="sides">SIDES</label>
             <input class="creator__input" id="sides" name="dice" type="text" size="6" 
-            [(ngModel)]="newDice.data.values?.length || newDice.data.value"
+            [(ngModel)]="newDice.data.value" (input)="setValuesFromSides()"
             [disabled]="newDice.data.name !== 'custom'">
          </div>
          <div class="creator__option">
             <label class="creator__label" for="values">
                VALUES
-               <select class="creator__label-mode" id="values">
-                  <option class="creator__label-option">MULTI</option>
-                  <option class="creator__label-option">SINGLE</option>
+               <select class="creator__label-mode" id="values" name="activeMode" [(ngModel)]="activeMode">
+                  <option class="creator__label-option" name="multi" value="multi">MULTI</option>
+                  <option class="creator__label-option" name="single" value="single">SINGLE</option>
                </select>
             </label>
             <div class="creator__input-values">
-               <div *ngFor="let newVal of newDice.data.values ; let i = index; trackBy:trackByIndex">
-                  <input #val *ngIf="newDice.data.values" class="creator__input" [id]="i" type="text" size="4" name="newVal" [(ngModel)]="newDice.data.values[i]">
-                  <div #values class="creator__select-value" (click)="showTableValues('val.id')">&#10140;</div>
+               <div *ngFor="let newVal of modeValue(); let i = index; trackBy:trackByIndex">
+                  <input #inputValue *ngIf="newDice.data.values" 
+                  class="creator__input" [id]="i" type="text" size="4" name="newVal" 
+                  [(ngModel)]="newDice.data.values && newDice.data.values[activeMode === 'single' ? i : newDice.data.values.length - 1 ]" 
+                  (input)="this.activeValue = inputValue.value" 
+                  (focusin)="this.activeValue = inputValue.value"
+                  [disabled]="activeMode === 'multi'">
+                  <div #values *ngIf="activeMode === 'single'" class="creator__select-value" (click)="showTableValues(i)">&#10140;</div>
                </div>
             </div> 
          </div>

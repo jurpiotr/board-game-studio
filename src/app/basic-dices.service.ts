@@ -14,6 +14,7 @@ export class BasicDicesService {
         data: {
           name: 'D4',
           value: 4,
+          values: ['1', '2', '3','4'],
           img: '../assets/logo.png',
           amount: 0,
         },
@@ -23,6 +24,7 @@ export class BasicDicesService {
         data: {
         name: 'D6',
         value: 6,
+        values: ['1', '2', '3','4', '5','6'],
         img: '../assets/logo.png',
         amount: 0,
         },
@@ -32,6 +34,7 @@ export class BasicDicesService {
         data: {
         name: 'D8',
         value: 8,
+        values: ['1', '2', '3', '4', '5','6', '7', '8'],
         img: '../assets/logo.png',
         amount: 0,
         },
@@ -41,6 +44,7 @@ export class BasicDicesService {
         data: {
         name: 'D10',
         value: 10,
+        values: ['1', '2', '3', '4', '5','6', '7', '8', '9', '10'],
         model: true,
         amount: 0,
         },
@@ -49,7 +53,8 @@ export class BasicDicesService {
         component: DeltohedronComponent,
         data: {
         name: 'D10 in tens',
-        values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+        value: 10,
+        values: ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
         model: true,
         amount: 0,
         },
@@ -59,6 +64,7 @@ export class BasicDicesService {
         data: {
         name: 'D12',
         value: 12,
+        values: ['1', '2', '3', '4', '5','6', '7', '8', '9', '10', '11', '12'],
         model: true,
         amount: 0,
         },
