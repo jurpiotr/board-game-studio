@@ -25,6 +25,7 @@ export class CreatorComponent implements OnInit {
   }
   activeValue: string = '';
   activeMode: string = 'multi';
+  newDiceName: string = '';
 
   constructor( private bDS: BasicDicesService, private cdRef: ChangeDetectorRef ) { }
 
@@ -63,4 +64,11 @@ export class CreatorComponent implements OnInit {
   trackByIndex(index: number) {
     return index;
   }
+
+  addNewDice() {
+    const copyDice = JSON.parse(JSON.stringify(this.newDice));
+    copyDice.data.name = this.newDiceName;
+    this.bDS.setDices(copyDice);
+  }
+
 }

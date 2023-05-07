@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DeltohedronComponent } from './dices/deltohedron/deltohedron.component';
 import { DodecahedronComponent } from './dices/dodecahedron/dodecahedron.component';
 import { Dice } from './dices/model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -71,10 +72,17 @@ export class BasicDicesService {
     }
     ];
 
+  dicesChanged = new Subject<void>();
+  
   constructor() { }
 
   getDices() {
     return this.dices;
+  }
+
+  setDices(newDice: Dice) {
+    this.dices.unshift(newDice);
+    this.dicesChanged.next();
   }
 
 }

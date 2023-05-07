@@ -8,9 +8,8 @@ import {
    Output,
    SimpleChanges,
    ChangeDetectionStrategy,
+   ChangeDetectorRef,
 } from '@angular/core';
-import { DodecahedronComponent } from '../dodecahedron/dodecahedron.component';
-import { DeltohedronComponent } from '../deltohedron/deltohedron.component';
 import { Dice } from '../model';
 import { BasicDicesService } from 'src/app/basic-dices.service';
 
@@ -25,7 +24,7 @@ export class DicePanelComponent implements OnInit, OnChanges {
    dices: Dice[] = [];
    componentInjector?: Injector;
 
-   constructor(private bDS: BasicDicesService, private injector: Injector) {}
+   constructor(private bDS: BasicDicesService, private cdRef: ChangeDetectorRef, private injector: Injector) {}
 
    ngOnInit() {
       this.dices = this.bDS.getDices();
@@ -33,6 +32,10 @@ export class DicePanelComponent implements OnInit, OnChanges {
       providers: [{ provide: 'data', useValue: this.dices[0].data }],
       parent: this.injector,
 		});
+
+      this.bDS.dicesChanged.subscribe(() => {
+         this.refreshComponent();
+      })
 	}
 
    @Input() removedDice?: Dice;
@@ -49,6 +52,12 @@ export class DicePanelComponent implements OnInit, OnChanges {
 			}
 		}
 	}
+   refreshComponent() {
+      this.dices = this.bDS.getDices();
+      this.cdRef.detectChanges();
+      console.log(this.dices)
+   }
+
    changeAmount(dice: any, delta: number = 1) {
       if (dice.data.amount !== undefined && dice.data.amount + delta >= 0) {
       dice.data.amount += delta;

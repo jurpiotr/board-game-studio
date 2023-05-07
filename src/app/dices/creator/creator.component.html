@@ -6,10 +6,10 @@
    <div class="creator">
       <aside class="creator__one-aside">
          <div class="creator__box-icon">
-            <div *ngIf="!newDice.component" class="creator__icon">{{ activeValue }}</div>
-            <ng-container *ngIf="newDice.component">
+            <div  class="creator__icon">{{ activeValue }}</div>
+            <!-- <ng-container *ngIf="newDice.component">
                <ng-container *ngComponentOutlet="newDice.component"></ng-container>
-            </ng-container>
+            </ng-container> -->
          </div>
       </aside>
       <aside class="creator__two-aside">
@@ -18,7 +18,6 @@
             <select class="creator__input" name="newDice" [(ngModel)]="newDice">
                <option *ngFor="let dice of dicesCollection" [ngValue]="dice" (click)="activeValue = dice.data.values!.length.toString()">{{ dice.data.name  | uppercase }}</option>
             </select>
-            <input *ngIf="newDice.data.name === 'custom'" class="creator__input" id="name" type="text" size="5" placeholder="name">
          </div>
          <div class="creator__option">
             <label class="creator__label" for="sides">SIDES</label>
@@ -46,7 +45,12 @@
                </div>
             </div> 
          </div>
+         <div class="creator__option">
+            <label class="creator__label" for="name-dice">NAME</label>
+            <input class="creator__input" id="name-dice" name="dice" type="text" size="6" 
+            [(ngModel)]="newDiceName">
+         </div>
       </aside>
    </div>
-   <div class="create-btn">ADD NEW DICE</div>
+   <div class="create-btn" (click)="addNewDice()">ADD NEW DICE</div>
 </div>
