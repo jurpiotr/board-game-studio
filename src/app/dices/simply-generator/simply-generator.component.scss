@@ -35,13 +35,13 @@
       top: 0;
       margin: 0.2rem;
       padding: 0.1rem 0.4rem;
-      background: rgba(141, 0, 0, 0.185);
+      color: $danger-c-dark;
 		border-radius: 5px;
 		transition: background 0.3s linear;
 		cursor: pointer;
 
 		&:hover {
-			background: rgba(141, 0, 0, 0.575);
+			color: $danger-c;
 		}
    }
 }

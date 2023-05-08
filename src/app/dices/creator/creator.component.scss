@@ -1,5 +1,23 @@
 @import "../../../stylings/vars.scss";
 
+@mixin action-btn {
+   width: fit-content;
+   margin: 1rem 0;
+   padding: 0.5rem;
+   border: 2px solid $formal-c-dark;
+   border-radius: 1rem;
+   cursor: pointer;
+   transition: all 0.3s;
+   &:hover {
+      border: 2px solid $sec-color-lightest;
+      box-shadow: 0 0 6px $sec-color-lightest, inset 0 0 6px $formal-c-lightest;
+      color: $formal-c-darkest;
+      &:hover {
+         background-color: $formal-c-lightest;
+      }
+   }
+}
+
 .container {
    min-height: 6rem;
    margin: 1rem;
@@ -48,7 +66,6 @@
       height: $size-dice;
       width: $size-dice;
       vertical-align: middle;
-      cursor: copy;
    }
    &__icon {
       position: relative;
@@ -133,22 +150,23 @@
       color: $sec-color-lightest;
       cursor: pointer;
    }
+   &__actions {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+   }
 }
 
 .create-btn {
-   width: fit-content;
-   margin: 1rem auto;
-   padding: 0.5rem;
-   background-color: $formal-c-lightest;
-   border: 2px solid $formal-c-dark;
-   border-radius: 1rem;
-   box-shadow: 0 0 6px $formal-c-dark, inset 0 0 6px $formal-c-dark;
-   cursor: pointer;
-   transition: all 0.3s;
+   @include action-btn;
+   background-color: $formal-c-dark;
+   color: $formal-c-lightest;
+}
+.remove-btn {
+   @include action-btn;
+   background-color: $danger-c-dark;
+   color: $danger-c-light;
    &:hover {
-      background-color: $formal-c-dark;
-      border: 2px solid $sec-color-lightest;
-      box-shadow: 0 0 6px $sec-color-lightest, inset 0 0 6px $formal-c-lightest;
-      color: $formal-c-lightest;
+      background-color: $danger-c-light;
    }
 }

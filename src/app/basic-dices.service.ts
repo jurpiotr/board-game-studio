@@ -80,8 +80,17 @@ export class BasicDicesService {
     return this.dices;
   }
 
-  setDices(newDice: Dice) {
+  setDice(newDice: Dice) {
     this.dices.unshift(newDice);
+    this.dicesChanged.next();
+  }
+
+  deleteDice(removingDice: Dice){
+    this.dices.find(((dice, i) => {
+      if(dice === removingDice) {
+        this.dices.splice(i, 1)
+      }
+    }))
     this.dicesChanged.next();
   }
 

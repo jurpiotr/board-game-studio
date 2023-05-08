@@ -16,7 +16,8 @@
          <div class="creator__option">
             <label class="creator__label" for="type">TYPE</label>
             <select class="creator__input" name="newDice" [(ngModel)]="newDice">
-               <option *ngFor="let dice of dicesCollection" [ngValue]="dice" (click)="activeValue = dice.data.values!.length.toString()">{{ dice.data.name  | uppercase }}</option>
+               <option *ngFor="let dice of dicesCollection" [ngValue]="dice" 
+               (click)="activeValue = dice.data.values!.length.toString(); activeDice = dice">{{ dice.data.name  | uppercase }}</option>
             </select>
          </div>
          <div class="creator__option">
@@ -52,5 +53,8 @@
          </div>
       </aside>
    </div>
-   <div class="create-btn" (click)="addNewDice()">ADD NEW DICE</div>
+   <div class="creator__actions">
+      <div class="create-btn" (click)="addNewDice()">ADD NEW DICE</div>
+      <button *ngIf="newDice.data.name !== 'custom'" class="remove-btn" (click)="removeDice()">REMOVE DICE</button>
+   </div>
 </div>

@@ -16,22 +16,32 @@ export class CreatorComponent implements OnInit {
 
   dicesCollection: Dice[] =  [];
 
-  newDice: Dice = {
+  newDice!: Dice;
+
+  defaultDice: Dice = {
     component: null,
     data: {
       name: 'custom',
       values: []
     }
   }
-  activeValue: string = '';
+  activeDice!: Dice;
+  activeValue!: string;
+  newDiceName!: string;
   activeMode: string = 'multi';
-  newDiceName: string = '';
 
   constructor( private bDS: BasicDicesService, private cdRef: ChangeDetectorRef ) { }
 
   ngOnInit() {
+    this.initDefaultDice();
     this.dicesCollection = this.bDS.getDices();
     this.dicesCollection.unshift(this.newDice)
+  }
+
+  initDefaultDice(){
+    this.activeValue = '';
+    this.newDiceName = '';
+    this.newDice = this.defaultDice; 
   }
 
   modeValue() {
@@ -68,7 +78,13 @@ export class CreatorComponent implements OnInit {
   addNewDice() {
     const copyDice = JSON.parse(JSON.stringify(this.newDice));
     copyDice.data.name = this.newDiceName;
-    this.bDS.setDices(copyDice);
+    this.bDS.setDice(copyDice);
+    this.initDefaultDice();
+  }
+
+  removeDice() {
+    this.bDS.deleteDice(this.newDice);
+    this.initDefaultDice();
   }
 
 }
