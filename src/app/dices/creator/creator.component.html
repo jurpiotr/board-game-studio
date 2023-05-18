@@ -3,7 +3,7 @@
       Create your own dice
    </h3>
    
-   <div class="creator">
+   <form class="creator" novalidate #diceForm="ngForm">
       <aside class="creator__one-aside">
          <div class="creator__box-icon">
             <div  class="creator__icon">{{ activeValue }}</div>
@@ -37,7 +37,7 @@
             <div class="creator__input-values">
                <div *ngFor="let newVal of modeValue(); let i = index; trackBy:trackByIndex">
                   <input #inputValue *ngIf="newDice.data.values" 
-                  class="creator__input" [id]="i" type="text" size="4" name="newVal" 
+                  class="creator__input" [id]="i" type="text" size="4" name="newVal{{i}}" 
                   [(ngModel)]="newDice.data.values && newDice.data.values[activeMode === 'single' ? i : newDice.data.values.length - 1 ]" 
                   (input)="this.activeValue = inputValue.value" 
                   (focusin)="this.activeValue = inputValue.value"
@@ -49,12 +49,13 @@
          <div class="creator__option">
             <label class="creator__label" for="name-dice">NAME</label>
             <input class="creator__input" id="name-dice" name="dice" type="text" size="6" 
-            [(ngModel)]="newDiceName">
+            [(ngModel)]="newDiceName" required="1">
          </div>
       </aside>
-   </div>
-   <div class="creator__actions">
-      <div class="create-btn" (click)="addNewDice()">ADD NEW DICE</div>
-      <button *ngIf="newDice.data.name !== 'custom'" class="remove-btn" (click)="removeDice()">REMOVE DICE</button>
-   </div>
+      <div class="creator__actions">
+         <button class="create-btn" (click)="addNewDice()" [disabled]="diceForm.invalid" [ngClass]="(diceForm.valid) ? 'create-btn--valid' : 'create-btn--invalid'">ADD NEW DICE</button>
+         <button *ngIf="newDice.data.name !== 'custom'" class="remove-btn" (click)="removeDice()">REMOVE DICE</button>
+      </div>
+   </form>
+   {{ diceForm.valid | json }}
 </div>

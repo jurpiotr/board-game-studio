@@ -28,14 +28,14 @@ export class CreatorComponent implements OnInit {
   activeDice!: Dice;
   activeValue!: string;
   newDiceName!: string;
-  activeMode: string = 'multi';
+  activeMode: string = 'single';
 
   constructor( private bDS: BasicDicesService, private cdRef: ChangeDetectorRef ) { }
 
   ngOnInit() {
     this.initDefaultDice();
     this.dicesCollection = this.bDS.getDices();
-    this.dicesCollection.unshift(this.newDice)
+    this.dicesCollection.unshift(this.newDice);
   }
 
   initDefaultDice(){
