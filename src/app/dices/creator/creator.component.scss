@@ -161,7 +161,7 @@
    background-color: $formal-c-dark;
    color: $formal-c-lightest;
    &--valid {
-
+      @include action-btn("valid");
    }
    &--invalid {
       background-color: transparent;
@@ -172,7 +172,7 @@
 }
 
 .remove-btn {
-   @include action-btn(remove-btn);
+   @include action-btn("valid");
    background-color: $danger-c-dark;
    color: $danger-c-light;
    &:hover {

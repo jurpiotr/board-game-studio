@@ -17,7 +17,7 @@
             <label class="creator__label" for="type">TYPE</label>
             <select class="creator__input" name="newDice" [(ngModel)]="newDice">
                <option *ngFor="let dice of dicesCollection" [ngValue]="dice" 
-               (click)="activeValue = dice.data.values!.length.toString(); activeDice = dice">{{ dice.data.name  | uppercase }}</option>
+               (click)="activeValue = dice.data.values![dice.data.values!.length -1]; activeDice = dice">{{ dice.data.name  | uppercase }}</option>
             </select>
          </div>
          <div class="creator__option">
@@ -48,8 +48,13 @@
          </div>
          <div class="creator__option">
             <label class="creator__label" for="name-dice">NAME</label>
-            <input class="creator__input" id="name-dice" name="dice" type="text" size="6" 
-            [(ngModel)]="newDiceName" required="1">
+            <input class="creator__input" id="name-dice" name="newDiceName" type="text" size="6" 
+            [(ngModel)]="newDiceName" #newDiceNameVar="ngModel" required="1">
+         </div>
+         <div class="creator__errors" *ngIf="newDiceNameVar.errors && newDiceNameVar.dirty || newDiceNameVar.touched" >
+            <span *ngIf="newDiceNameVar.errors?.['required']">
+               Please enter name for the Dice
+            </span>
          </div>
       </aside>
       <div class="creator__actions">
@@ -57,5 +62,4 @@
          <button *ngIf="newDice.data.name !== 'custom'" class="remove-btn" (click)="removeDice()">REMOVE DICE</button>
       </div>
    </form>
-   {{ diceForm.valid | json }}
 </div>
